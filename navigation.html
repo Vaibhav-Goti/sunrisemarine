@@ -65,6 +65,11 @@
       font-size: 1.2rem;
       margin-bottom: 10px;
     }
+    /* Make all product cards the same height */
+    .product-grid .col-md-4 { display: flex; }
+    .product-card { display: flex; flex-direction: column; width: 100%; height: 100%; }
+    .product-info { flex-grow: 1; display: flex; flex-direction: column; }
+    .product-info p { margin-top: auto; }
     .modal-image-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -73,10 +78,16 @@
     }
     .modal-image-gallery img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: auto;
+      max-height: 360px;
+      object-fit: contain;
       border-radius: 4px;
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 6px;
     }
+    .modal-body p { margin-bottom: 0.75rem; }
+    .modal-body ul { padding-left: 1.2rem; margin-bottom: 0; }
   </style>
 </head>
 
@@ -155,7 +166,7 @@
                     <ul class="dropdown">
                       <li class="active"><a href="navigation.html">Navigation Equipment</a></li>
                       <li><a href="automation.html">Automation Systems</a></li>
-                      <li><a href="safety.html">Safety Equipment</a></li>
+                      
                       <li><a href="machinery.html">Marine Machinery</a></li>
                       <li><a href="drill.html">Drill Rig Equipment</a></li>
                       <li><a href="marine-antiques.html">Marine Entiquies</a></li>
@@ -290,6 +301,69 @@
               </div>
             </div>
           </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal10">
+              <div class="product-image">
+                <img src="images1/navigation/svdr.png" alt="SVDR / VDR Unit">
+              </div>
+              <div class="product-info">
+                <h3>SVDR / VDR Unit</h3>
+                <p>Voyage data recording and monitoring equipment for incident analysis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal11">
+              <div class="product-image">
+                <img src="images1/navigation/clinometer1.png" alt="Clinometer">
+              </div>
+              <div class="product-info">
+                <h3>Clinometer</h3>
+                <p>Angle-of-list indicator to monitor vessel heel and stability.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal12">
+              <div class="product-image">
+                <img src="images1/navigation/binnacle-compass.png" alt="Binnacle Compass">
+              </div>
+              <div class="product-info">
+                <h3>Binnacle Compass</h3>
+                <p>Traditional pedestal-mounted compass with compensating spheres.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal13">
+              <div class="product-image">
+                <img src="images1/navigation/barometer1.png" alt="Marine Barometer">
+              </div>
+              <div class="product-info">
+                  <h3>Marine Barometer</h3>
+                <p>Precision barometer for monitoring atmospheric pressure and weather.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal14">
+              <div class="product-image">
+                <img src="images1/navigation/fog-horn.jfif" alt="Fog Horn">
+              </div>
+              <div class="product-info">
+                <h3>Fog Horn</h3> 
+                <p>Fog horn for vessel visibility and safety compliance.ships to signal presence and avoid collisions in low visibility conditions (fog, mist, etc.).</p>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -316,7 +390,7 @@
               <ul class="list-unstyled">
                   <li><a href="navigation.html">Navigation Equipment</a></li>
                   <li><a href="automation.html">Automation Systems</a></li>
-                  <li><a href="safety.html">Safety Equipment</a></li>
+                  
                   <li><a href="machinery.html">Marine Machinery</a></li>
                   <li><a href="deck.html">Deck Equipment</a></li>
               </ul>
@@ -379,7 +453,373 @@
     </div>
   </div>
 
-  <!-- Add similar modals for other products -->
+  <!-- Marine Compass Modal -->
+  <div class="modal fade" id="productModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Marine Compass</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/Compass.jpg" alt="Marine Compass">
+            <img src="images1/navigation/binnacle-compass.png" alt="Binnacle Compass">
+          </div>
+          <h6>Description</h6>
+          <p>Reliable magnetic compasses for navigation and course plotting, suitable for a wide range of vessels.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Liquid-damped cards for stable readings</li>
+            <li>Bracket and binnacle mounting options</li>
+            <li>Adjustable compensation for deviation</li>
+            <li>Night illumination and lubber line</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marine Radar Modal -->
+  <div class="modal fade" id="productModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Marine Radar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/radar.jpg" alt="Marine Radar">
+            <img src="images1/navigation/Navnet.png" alt="Integrated NavNet Radar">
+          </div>
+          <h6>Description</h6>
+          <p>Advanced radar systems for target detection, navigation in poor visibility, and collision avoidance.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>ARPA target tracking and guard zones</li>
+            <li>Rain/sea clutter suppression</li>
+            <li>High-resolution LCD displays</li>
+            <li>Interface with AIS and ECDIS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Autopilot System Modal -->
+  <div class="modal fade" id="productModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Autopilot System</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/Autopilot.png" alt="Autopilot System">
+          </div>
+          <h6>Description</h6>
+          <p>Automated steering solutions to maintain precise courses, reduce workload, and improve fuel efficiency.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Heading and track control modes</li>
+            <li>Adaptive sea-state control</li>
+            <li>Rudder limit and rate settings</li>
+            <li>NMEA/serial interfaces to GPS and gyro</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marine GPS Modal -->
+  <div class="modal fade" id="productModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Marine GPS</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/marine-GPS.jpg" alt="Marine GPS">
+          </div>
+          <h6>Description</h6>
+          <p>High-accuracy GPS receivers for reliable positioning, route tracking, and integration with ECDIS.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Multi-GNSS support (GPS/GLONASS/BeiDou)</li>
+            <li>SBAS augmentation for improved accuracy</li>
+            <li>Waypoints, routes, and track logging</li>
+            <li>NMEA 0183/2000 connectivity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Echo Sounder Modal -->
+  <div class="modal fade" id="productModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Echo Sounder</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/echo sounder.jpg" alt="Echo Sounder">
+          </div>
+          <h6>Description</h6>
+          <p>Depth measurement systems enabling safe navigation in shallow waters and accurate seabed profiling.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Single/dual frequency transducers</li>
+            <li>Shallow/deep alarm thresholds</li>
+            <li>Graphical depth history</li>
+            <li>Data output to voyage recorders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Speed Log Modal -->
+  <div class="modal fade" id="productModal7" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Speed Log</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/speed-log.png" alt="Speed Log">
+          </div>
+          <h6>Description</h6>
+          <p>Accurate vessel speed measurement for navigation, performance monitoring, and voyage planning.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Water-track or ground-track modes</li>
+            <li>Total/distance run integration</li>
+            <li>Bow/stern transducer options</li>
+            <li>Interfaces with ECDIS and VDR</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NavNet System Modal -->
+  <div class="modal fade" id="productModal8" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">NavNet System</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/Navnet.png" alt="NavNet System">
+          </div>
+          <h6>Description</h6>
+          <p>Integrated navigation network combining radar, chart plotter, sounder, and more into a unified system.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Modular MFD architecture</li>
+            <li>Chart, radar, and sounder overlays</li>
+            <li>Ethernet-based sensor sharing</li>
+            <li>Remote and redundancy options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Lights Modal -->
+  <div class="modal fade" id="productModal9" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Navigation Lights</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/navigation-lights.jpg" alt="Navigation Lights">
+          </div>
+          <h6>Description</h6>
+          <p>Durable and compliant lighting solutions to ensure visibility and meet maritime regulations.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>COLREGS-compliant sectors and intensity</li>
+            <li>LED and halogen variants</li>
+            <li>IP-rated marine housings</li>
+            <li>Bracket and masthead mounting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVDR / VDR Modal -->
+  <div class="modal fade" id="productModal10" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">SVDR / VDR Unit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/svdr.png" alt="SVDR / VDR Unit">
+          </div>
+          <h6>Description</h6>
+          <p>Voyage data recorders for incident investigation and performance analysis, built to IMO standards.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Protected capsule and float-free options</li>
+            <li>Audio, radar, AIS, and NMEA capture</li>
+            <li>Long-duration data storage</li>
+            <li>Self-test and remote download</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clinometer Modal -->
+  <div class="modal fade" id="productModal11" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Clinometer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/clinometer1.png" alt="Clinometer">
+          </div>
+          <h6>Description</h6>
+          <p>Angle-of-list indicators to monitor vessel heel, aiding stability management and safety.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Clear scale with fine graduations</li>
+            <li>Shock and vibration resistant</li>
+            <li>Bulkhead or panel mounting</li>
+            <li>Optional electrical output</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Binnacle Compass Modal -->
+  <div class="modal fade" id="productModal12" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Binnacle Compass</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/binnacle-compass.png" alt="Binnacle Compass">
+          </div>
+          <h6>Description</h6>
+          <p>Pedestal-mounted compasses with compensating spheres, ideal for bridge installations.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Heavy-duty binnacle with gimballed bowl</li>
+            <li>Quadrantal and heeling correctors</li>
+            <li>Dimmable lighting</li>
+            <li>Serviceable spare parts available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marine Barometer Modal -->
+  <div class="modal fade" id="productModal13" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Marine Barometer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/barometer1.png" alt="Marine Barometer">
+            <img src="images1/navigation/barometer.jfif" alt="Marine Barometer Variant">
+          </div>
+          <h6>Description</h6>
+          <p>Precision barometers to monitor atmospheric pressure trends and support onboard weather forecasting.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Aneroid mechanism with fine adjustment</li>
+            <li>Trend indicators and dual scales</li>
+            <li>Brass/SS marine enclosures</li>
+            <li>Wall or panel mounting plates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fog Horn Modal -->
+  <div class="modal fade" id="productModal14" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Fog Horn</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-gallery">
+            <img src="images1/navigation/fog-horn.jfif" alt="Fog Horn">
+            <img src="images1/navigation/horn.png" alt="Fog Horn Variant">
+          </div>
+          <h6>Description</h6>
+          <p>Audible signaling devices for low-visibility conditions to ensure safe operations and compliance.</p>
+          <h6>Features</h6>
+          <ul>
+            <li>Electric, air, or manual actuation</li>
+            <li>Long-range audibility per COLREGS</li>
+            <li>Corrosion-resistant construction</li>
+            <li>Bridge and deck mounting kits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- loader -->
   <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>

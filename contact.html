@@ -28,6 +28,13 @@
 
   <link rel="stylesheet" href="css/style.css">
 
+  <style>
+    .address-card { border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+    .address-card h2 { font-weight: 600; }
+    .address-card address { font-size: 1.05rem; line-height: 1.9; }
+    .map-embed { width: 100%; min-height: 360px; border: 0; border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  </style>
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -116,7 +123,7 @@
                   <ul class="dropdown">
                     <li><a href="navigation.html">Navigation Equipment</a></li>
                     <li><a href="automation.html">Automation Systems</a></li>
-                    <li><a href="safety.html">Safety Equipment</a></li>
+                    
                     <li><a href="machinery.html">Marine Machinery</a></li>
                     <li><a href="drill.html">Drill Rig Equipment</a></li>
                     <li><a href="marine-antiques.html">Marine Entiquies</a></li>
@@ -186,6 +193,32 @@
       </div>
     </div>
 
+    <div class="site-section pt-0">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="bg-white p-4 p-md-5 border address-card h-100">
+              <h2 class="mb-3 text-black d-flex align-items-center">
+                <span class="icon-location-arrow text-primary mr-2"></span> Works Address
+              </h2>
+              <address class="mb-0">
+                ASMA Plot # 257,<br>
+                Opp. Plot # 16,<br>
+                Ship Breaking Yard, Alang,<br>
+                Dist.- Bhavnagar.<br>
+                Gujarat - (INDIA)
+              </address>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <iframe class="map-embed" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Alang%20Ship%20Breaking%20Yard%2C%20Gujarat%2C%20India&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer bg-light">
       <div class="container">
         <div class="row">
@@ -206,7 +239,7 @@
               <ul class="list-unstyled">
                   <li><a href="navigation.html">Navigation Equipment</a></li>
                   <li><a href="automation.html">Automation Systems</a></li>
-                  <li><a href="safety.html">Safety Equipment</a></li>
+                  
                   <li><a href="machinery.html">Marine Machinery</a></li>
                   <li><a href="drill.html">Drill Rig Equipment</a></li>
                   <li><a href="marine-antiques.html">Marine Entiquies</a></li>

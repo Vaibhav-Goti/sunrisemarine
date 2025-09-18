@@ -123,7 +123,7 @@
                   <ul class="dropdown">
                     <li><a href="navigation.html">Navigation Equipment</a></li>
                     <li><a href="automation.html">Automation Systems</a></li>
-                    <li><a href="safety.html">Safety Equipment</a></li>
+                    
                     <li><a href="machinery.html">Marine Machinery</a></li>
                     <li><a href="drill.html">Drill Rig Equipment</a></li>
                     <li><a href="marine-antiques.html">Marine Entiquies</a></li>
@@ -353,7 +353,7 @@
               <ul class="list-unstyled">
                   <li><a href="navigation.html">Navigation Equipment</a></li>
                   <li><a href="automation.html">Automation Systems</a></li>
-                  <li><a href="safety.html">Safety Equipment</a></li>
+                  
                   <li><a href="machinery.html">Marine Machinery</a></li>
                   <li><a href="drill.html">Drill Rig Equipment</a></li>
                   <li><a href="marine-antiques.html">Marine Entiquies</a></li>

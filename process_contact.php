@@ -2,8 +2,14 @@
 // Include PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
 require 'vendor/autoload.php';
+
+// Load environment variables
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$dotenv->required(['SMTP_HOST', 'SMTP_USERNAME', 'SMTP_PASSWORD', 'RECAPTCHA_SECRET_KEY']);
 
 // Function to clean input data
 function clean_input($data) {
@@ -17,7 +23,7 @@ function clean_input($data) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Verify reCAPTCHA
-    $recaptcha_secret = "6LeyQsQrAAAAAMv3ejiuEqC3WL2BdKMmi9EI1owN";  // Replace with your secret key
+    $recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
     $recaptcha_response = $_POST['g-recaptcha-response'];
     
     $verify_url = "https://www.google.com/recaptcha/api/siteverify";
@@ -51,16 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             // Server settings
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';  // Replace with your SMTP host
+            $mail->Host = $_ENV['SMTP_HOST'];
             $mail->SMTPAuth = true;
-            $mail->Username = 'krishnaaakimtani@gmail.com';  // Replace with your email
-            $mail->Password = 'glpjuyabmbmnjfak';  // Replace with your email password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
+            $mail->Username = $_ENV['SMTP_USERNAME'];
+            $mail->Password = $_ENV['SMTP_PASSWORD'];
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
             
             // Recipients
-            $mail->setFrom($email, $name);
-            $mail->addAddress('info@sunrise-marine.com');  // Replace with recipient email
+            $mail->setFrom($_ENV['SMTP_USERNAME'], 'Sunrise Marine');
+            $mail->addAddress($_ENV['SMTP_USERNAME']);
+            $mail->addReplyTo($email, $name);
             
             // Content
             $mail->isHTML(true);
@@ -74,6 +81,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ";
             
             $mail->send();
+            
+            // Send confirmation email to the user
+            try {
+                $confirm = new PHPMailer(true);
+                $confirm->isSMTP();
+                $confirm->Host = $_ENV['SMTP_HOST'];
+                $confirm->SMTPAuth = true;
+                $confirm->Username = $_ENV['SMTP_USERNAME'];
+                $confirm->Password = $_ENV['SMTP_PASSWORD'];
+                $confirm->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                $confirm->Port = 465;
+
+                $confirm->setFrom($_ENV['SMTP_USERNAME'], 'Sunrise Marine');
+                $confirm->addAddress($email, $name);
+                
+                $confirm->isHTML(true);
+                $confirm->Subject = 'Thank you for contacting Sunrise Marine';
+                $confirm->Body = "
+                    <p>Dear {$name},</p>
+                    <p>Thank you for reaching out to Sunrise Marine. We have received your message and our team will get back to you shortly.</p>
+                    <p><strong>Your message:</strong></p>
+                    <p>" . nl2br($message) . "</p>
+                    <p>Best regards,<br>Sunrise Marine Enterprise</p>
+                ";
+                $confirm->AltBody = "Dear {$name},\n\nThank you for reaching out to Sunrise Marine. We have received your message and our team will get back to you shortly.\n\nYour message:\n{$message}\n\nBest regards,\nSunrise Marine Enterprise";
+                
+                $confirm->send();
+            } catch (Exception $e) {
+                // Ignore confirmation email errors to not affect user flow
+            }
             header('Location: contact.html?status=success');
             exit();
             

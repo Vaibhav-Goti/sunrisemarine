@@ -95,28 +95,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $mail->SMTPAuth = true;
          $mail->Username = $_ENV['SMTP_USERNAME'];
          $mail->Password = $_ENV['SMTP_PASSWORD'];
-         $mail->SMTPSecure = $_ENV['SMTP_ENCRYPTION'];
-         $mail->Port = $_ENV['SMTP_PORT'];
+         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+         $mail->Port = 465;
 
         // Recipients
-        $mail->setFrom($admin_email, 'Sunrise Marine Quote System');
-        $mail->addAddress($email, $name);
-        $mail->addReplyTo($admin_email);
+        $mail->setFrom($admin_email);
+        $mail->addAddress($admin_email);
+        $mail->addReplyTo($email, $name);
 
         // Content
         $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Message";
-        $mail->Body = "Name: $name<br>";
-        $mail->Body .= "Email: $email<br>";
-        $mail->Body .= "Message:<br>";
-        $mail->Body .= "$message";              
+        $mail->Subject = "New Quote Request from $name";
+        $mail->Body = "<h2>New Quote Request Received</h2>";
+        $mail->Body .= "<p><strong>Name:</strong> $name</p>";
+        $mail->Body .= "<p><strong>Email:</strong> $email</p>";
+        $mail->Body .= "<p><strong>Phone:</strong> $phone</p>";
+        $mail->Body .= "<p><strong>Product Category:</strong> $product_category</p>";
+        $mail->Body .= "<p><strong>Specific Product:</strong> $specific_product</p>";
+        $mail->Body .= "<p><strong>Message:</strong></p>";
+        $mail->Body .= "<p>$message</p>";
         
-        $mail->AltBody = "Name: $name\n";
+        $mail->AltBody = "New Quote Request Received\n\n";
+        $mail->AltBody .= "Name: $name\n";
         $mail->AltBody .= "Email: $email\n";
-        $mail->AltBody .= "Message:\n";
-        $mail->AltBody .= "$message";
+        $mail->AltBody .= "Phone: $phone\n";
+        $mail->AltBody .= "Product Category: $product_category\n";
+        $mail->AltBody .= "Specific Product: $specific_product\n";
+        $mail->AltBody .= "Message:\n$message";
         
         $mail->send();
+
+        // Send confirmation email to the user (non-blocking for UX)
+        try {
+            $confirm = new PHPMailer(true);
+            $confirm->SMTPDebug = 0;
+            $confirm->isSMTP();
+            $confirm->Host = $_ENV['SMTP_HOST'];
+            $confirm->SMTPAuth = true;
+            $confirm->Username = $_ENV['SMTP_USERNAME'];
+            $confirm->Password = $_ENV['SMTP_PASSWORD'];
+            $confirm->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $confirm->Port = 465;
+
+            $confirm->setFrom($admin_email, 'Sunrise Marine');
+            $confirm->addAddress($email, $name);
+
+            $confirm->isHTML(true);
+            $confirm->Subject = 'Thank you for your quote request';
+            $confirm->Body = "
+                <p>Dear {$name},</p>
+                <p>Thank you for your interest in Sunrise Marine. We have received your quote request and will contact you soon.</p>
+                <p><strong>Summary of your request:</strong></p>
+                <ul>
+                  <li><strong>Product Category:</strong> {$product_category}</li>
+                  <li><strong>Specific Product:</strong> {$specific_product}</li>
+                  <li><strong>Phone:</strong> {$phone}</li>
+                </ul>
+                <p><strong>Your message:</strong></p>
+                <p>" . nl2br($message) . "</p>
+                <p>Best regards,<br>Sunrise Marine Enterprise</p>
+            ";
+            $confirm->AltBody = "Dear {$name},\n\nThank you for your interest in Sunrise Marine. We have received your quote request and will contact you soon.\n\nSummary of your request:\n- Product Category: {$product_category}\n- Specific Product: {$specific_product}\n- Phone: {$phone}\n\nYour message:\n{$message}\n\nBest regards,\nSunrise Marine Enterprise";
+
+            $confirm->send();
+        } catch (Exception $e) {
+            // Ignore confirmation email errors
+        }
 
         // Clear any output and redirect
         ob_end_clean(); // Clean (erase) the output buffer and turn off output buffering
