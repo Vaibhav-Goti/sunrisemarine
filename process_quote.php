@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Recipients
         $mail->setFrom($admin_email);
-        $mail->addAddress($admin_email);
+        $mail->addAddress('sunrisemarine11@gmail.com');
         $mail->addReplyTo($email, $name);
 
         // Content
