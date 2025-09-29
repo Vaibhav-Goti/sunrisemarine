@@ -27,6 +27,18 @@
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="css/style.css?v=1.2">
+  
+  <!-- Additional CSS for sticky header icons -->
+  <style>
+    /* Force show contact icons when header is scrolled */
+    .header-top.scrolled .d-none.d-lg-block {
+      display: block !important;
+    }
+    
+    .header-top.scrolled .quick-contact-icons {
+      display: flex !important;
+    }
+  </style>
 
   <!-- Drill Gallery Styles -->
   <style>
@@ -140,7 +152,408 @@
 
   <!-- Add reCAPTCHA script -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+  
+  <!-- Sticky Header Styles -->
+  <style>
+    .header-top {
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1000;
+    }
+    
+    .header-top.scrolled {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background-color: #ffffff !important; /* Ensure white background */
+      border: none !important; /* Remove any borders */
+      outline: none !important;
+    }
+    
+    /* Force white background on all header elements */
+    .header-top.scrolled,
+    .header-top.scrolled *,
+    .header-top.scrolled .container,
+    .header-top.scrolled .container * {
+      background-color: #ffffff !important;
+      border: none !important;
+      outline: none !important;
+    }
+    
+    /* Ensure header elements don't have any white space */
+    .header-top.scrolled .quick-contact-icons,
+    .header-top.scrolled .company-name {
+      background-color: #ffffff !important;
+    }
+    
+    .header-top.scrolled .container {
+      padding: 0.75rem 0; /* Increased padding to keep icons visible */
+    }
+    
+    .header-top.scrolled .company-name h3 {
+      font-size: 0.95rem !important; /* Slightly larger to maintain readability */
+    }
+    
+    .header-top.scrolled .quick-contact-icons .text .h4 {
+      font-size: 0.85rem; /* Slightly larger */
+    }
+    
+    .header-top.scrolled .quick-contact-icons .text .caption-text {
+      font-size: 0.7rem; /* Slightly larger */
+    }
+    
+    .header-top.scrolled img {
+      max-height: 45px !important; /* Slightly larger logo */
+    }
+    
+    .header-top.scrolled .quick-contact-icons {
+      margin-bottom: 0;
+    }
+    
+    /* Ensure icons remain visible */
+    .header-top.scrolled .quick-contact-icons .icon {
+      font-size: 1rem; /* Keep icon size readable */
+    }
+    
+    /* Adjust row alignment for reduced header */
+    .header-top.scrolled .row {
+      align-items: center;
+    }
+    
+    /* Add padding to body when header is sticky */
+    body.header-sticky {
+      padding-top: 85px; /* Increased to account for larger header */
+    }
+    
+    /* Smooth transition for all elements */
+    .header-top * {
+      transition: all 0.3s ease;
+    }
+    
+    /* Navbar height reduction styles */
+    .site-navbar {
+      transition: all 0.3s ease;
+    }
+    
+    .site-navbar.scrolled {
+      padding: 0.25rem 0 !important;
+      background-color: #007bff !important; /* Ensure blue background */
+      border: none !important; /* Remove any borders */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Add subtle shadow */
+    }
+    
+    .site-navbar.scrolled .nav-link {
+      padding: 0.4rem 1rem !important;
+      font-size: 0.9rem;
+    }
+    
+    .site-navbar.scrolled .site-menu {
+      margin-bottom: 0;
+    }
+    
+    /* Ensure navbar has proper background when sticky */
+    .site-navbar.scrolled .container {
+      background-color: #007bff;
+    }
+    
+    /* Ensure navbar stays below header when both are sticky */
+    .site-navbar.scrolled {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0.25rem !important;
+      /* Top position will be set dynamically by JavaScript */
+    }
+    
+    /* Ensure absolutely no gap between header and navbar */
+    .header-top.scrolled + .site-navbar.scrolled {
+      margin-top: 0 !important;
+    }
+    
+    /* Adjust body padding when both header and navbar are sticky */
+    body.header-sticky.navbar-sticky {
+      padding-top: 90px; /* Reduced padding to match actual heights */
+    }
+    
+    /* Ensure smooth transition for navbar positioning */
+    .site-navbar {
+      transition: all 0.3s ease;
+    }
+    
+    /* Remove any default margins that might cause gaps */
+    .site-navbar.scrolled {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    /* Ensure no gaps between header and navbar */
+    .header-top.scrolled + .site-navbar.scrolled {
+      margin-top: 0;
+    }
+    
+    /* Remove any potential white space or borders */
+    .site-navbar.scrolled::before,
+    .site-navbar.scrolled::after {
+      display: none;
+    }
+    
+    /* Ensure seamless connection */
+    .header-top.scrolled {
+      border-bottom: none !important;
+      outline: none !important;
+    }
+    
+    .site-navbar.scrolled {
+      border-top: none !important;
+      border-bottom: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      outline: none !important;
+    }
+    
+    /* More aggressive overrides to eliminate any white space */
+    .site-navbar.scrolled,
+    .site-navbar.scrolled *,
+    .site-navbar.scrolled .container,
+    .site-navbar.scrolled .container * {
+      background-color: #007bff !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Override any potential white backgrounds */
+    .site-navbar.scrolled .nav-link {
+      background-color: transparent !important;
+      border: none !important;
+    }
+    
+    /* Ensure no white space around navbar */
+    .site-navbar.scrolled {
+      margin: 0 !important;
+      padding: 0.25rem 0 !important;
+    }
+    
+    /* Force blue background on all navbar elements */
+    .site-navbar.scrolled .site-navigation,
+    .site-navbar.scrolled .site-menu,
+    .site-navbar.scrolled .site-menu li {
+      background-color: #007bff !important;
+    }
+    
+    /* Keep dropdown background white when scrolled */
+    .site-navbar.scrolled .site-menu .dropdown {
+      background-color: #ffffff !important;
+    }
+    
+    .site-navbar.scrolled .site-menu .dropdown li {
+      background-color: #ffffff !important;
+    }
+    
+    .site-navbar.scrolled .site-menu .dropdown li a {
+      background-color: #ffffff !important;
+      color: #333 !important;
+    }
+    
+    .site-navbar.scrolled .site-menu .dropdown li a:hover {
+      background-color: #f8f9fa !important;
+      color: #007bff !important;
+    }
+    
+    /* Override Bootstrap d-none d-lg-block classes when scrolled */
+    .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+      display: block !important; /* Override d-none when scrolled */
+    }
+    
+    .header-top.scrolled .quick-contact-icons {
+      display: flex !important; /* Ensure icons are visible when scrolled */
+    }
+    
+    /* More specific override for Bootstrap classes */
+    .header-top.scrolled .d-none.d-lg-block {
+      display: block !important;
+    }
+    
+    /* Force visibility of contact icons when scrolled */
+    .header-top.scrolled .col-lg-3:not(:first-child) {
+      display: block !important;
+    }
+    
+    /* Ensure proper flex layout when scrolled */
+    .header-top.scrolled .row {
+      display: flex !important;
+      flex-wrap: wrap !important;
+    }
+    
+    /* Make sure all contact icon columns are visible when scrolled */
+    .header-top.scrolled .col-lg-3 {
+      display: block !important;
+    }
+    
+    /* Very specific override for Bootstrap d-none class */
+    .header-top.scrolled .col-lg-3.d-none {
+      display: block !important;
+    }
+    
+    /* Override all Bootstrap display utilities when scrolled */
+    .header-top.scrolled .d-none {
+      display: block !important;
+    }
+    
+    /* Force show all contact icon containers */
+    .header-top.scrolled .container .row .col-lg-3 {
+      display: block !important;
+    }
+    
+    /* Debug: Add a visible border when scrolled to confirm class is applied */
+    /* .header-top.scrolled {
+      border: 2px solid red !important;
+    } */
+    
+    /* Most aggressive override - target the exact elements */
+    .header-top.scrolled .col-lg-3:nth-child(2),
+    .header-top.scrolled .col-lg-3:nth-child(3),
+    .header-top.scrolled .col-lg-3:nth-child(4) {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Ensure the icon content is visible */
+    .header-top.scrolled .quick-contact-icons {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    .header-top.scrolled .quick-contact-icons .icon {
+      display: block !important;
+      visibility: visible !important;
+    }
+    
+    .header-top.scrolled .quick-contact-icons .text {
+      display: block !important;
+      visibility: visible !important;
+    }
+    
+    .header-top.scrolled .quick-contact-icons .text .h4 {
+      display: block !important;
+      visibility: visible !important;
+    }
+    
+    .header-top.scrolled .quick-contact-icons .text .caption-text {
+      display: block !important;
+      visibility: visible !important;
+    }
+    
+    /* Force proper sizing and visibility of all text elements */
+    .header-top.scrolled .quick-contact-icons .text .h4,
+    .header-top.scrolled .quick-contact-icons .text .caption-text {
+      font-size: 0.8rem !important;
+      line-height: 1.2 !important;
+      color: #333 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    /* Ensure icons are visible */
+    .header-top.scrolled .quick-contact-icons .icon span {
+      font-size: 1rem !important;
+      color: #007bff !important;
+      display: inline-block !important;
+    }
+    
+    /* Responsive adjustments for header icons */
+    @media (max-width: 992px) {
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        display: block !important; /* Force show on smaller screens when scrolled */
+        flex: 0 0 33.333%; /* Adjust column width to fit all three icons */
+      }
+      
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important; /* Keep contact info visible on smaller screens when scrolled */
+      }
+      
+      /* Make icons smaller on mobile when scrolled */
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.75rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.65rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-top.scrolled .container {
+        padding: 0.5rem 0; /* Reduce padding on mobile */
+      }
+      
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.85rem !important;
+      }
+      
+      .header-top.scrolled img {
+        max-height: 35px !important;
+      }
+      
+      /* Adjust column layout for mobile when scrolled */
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        flex: 0 0 50%; /* Two icons per row on mobile */
+        margin-bottom: 0.5rem;
+      }
+      
+      /* Further reduce icon sizes on smaller screens */
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.7rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.6rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Extra small screens */
+    @media (max-width: 576px) {
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        flex: 0 0 100%; /* Full width on very small screens */
+        margin-bottom: 0.25rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.65rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.55rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 0.75rem;
+      }
+      
+      /* Stack icons vertically on very small screens if needed */
+      .header-top.scrolled .quick-contact-icons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -156,15 +569,16 @@
       <div class="site-mobile-menu-body"></div>
     </div>
 
-
     
     <div class="header-top bg-light">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 col-lg-3">
-            <a href="index.php" class="d-flex align-items-center">
-              <img src="images1/logos.png" alt="Sunrise Marine Logo" class="img-fluid mr-2" style="max-height: 80px; width: auto;">
-              
+            <a href="index.php" class="d-flex align-items-center text-decoration-none">
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 60px; width: auto; flex-shrink: 0;">
+              <div class="company-name">
+                <h3 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #333; line-height: 1.2;">Sunrise Marine Enterprise</h3>
+              </div>
             </a>
           </div>
           <div class="col-lg-3 d-none d-lg-block">
@@ -211,8 +625,7 @@
         </div>
       </div>
       
-
-
+      
       
       <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
 
@@ -333,37 +746,7 @@
       </div>
     </div>
 
-    <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="counter-39392">
-              <h3>15+</h3>
-              <span>Years of Experience</span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="counter-39392">
-              <h3>500+</h3>
-              <span>Clients Worldwide</span>
-            </div>
-          </div>
-         
-          <div class="col">
-            <div class="counter-39392">
-              <h3>50+</h3>
-              <span>Global Partners</span>
-            </div>
-          </div>
-          <div class="col">
-            <div class="counter-39392">
-              <h3>24/7</h3>
-              <span>Technical Support</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- product images  -->
 
@@ -433,6 +816,38 @@
         
         <div class="text-center mt-4">
           <a href="drill.html" class="btn btn-primary py-3 px-5">View All Drill Equipment</a>
+        </div>
+      </div>
+    </div>
+
+        <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="counter-39392">
+              <h3>15+</h3>
+              <span>Years of Experience</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="counter-39392">
+              <h3>500+</h3>
+              <span>Clients Worldwide</span>
+            </div>
+          </div>
+         
+          <div class="col">
+            <div class="counter-39392">
+              <h3>50+</h3>
+              <span>Global Partners</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="counter-39392">
+              <h3>24/7</h3>
+              <span>Technical Support</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -518,10 +933,13 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
-            <p class="mb-4"><img src="images1/logos.png" alt="Sunrise Marine Logo" class="img-fluid" style="max-height: 60px; width: auto;"></p>
+            <div class="d-flex align-items-center mb-4">
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 50px; width: auto; flex-shrink: 0;">
+              <h4 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise Marine Enterprise</h4>
+            </div>
             <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 25 years of experience, we provide comprehensive marine equipment solutions worldwide.</p>  
             <p><a href="about.html">Learn More</a></p>
-          </div>
+          </div>  
           <div class="col-lg-3">
             <h3 class="footer-heading"><span>Our Company</span></h3>
             <ul class="list-unstyled">
@@ -589,6 +1007,54 @@
   <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
   <script src="js/main.js"></script>
+  
+  <!-- Sticky Header and Navbar JavaScript -->
+  <script>
+    $(document).ready(function() {
+      var header = $('.header-top');
+      var navbar = $('.site-navbar');
+      var scrollThreshold = 100; // Start shrinking after 100px scroll
+      
+      function updateNavbarPosition() {
+        if (header.hasClass('scrolled')) {
+          var headerHeight = header.outerHeight();
+          navbar.css('top', headerHeight + 'px');
+        }
+      }
+      
+      $(window).scroll(function() {
+        var scrollTop = $(this).scrollTop();
+        
+        if (scrollTop > scrollThreshold) {
+          // Add scrolled class and sticky behavior to header
+          header.addClass('scrolled');
+          $('body').addClass('header-sticky');
+          
+          // Add scrolled class and sticky behavior to navbar
+          navbar.addClass('scrolled');
+          $('body').addClass('navbar-sticky');
+          
+          // Update navbar position after a short delay to ensure header height is calculated
+          setTimeout(updateNavbarPosition, 10);
+        } else {
+          // Remove scrolled class and sticky behavior from header
+          header.removeClass('scrolled');
+          $('body').removeClass('header-sticky');
+          
+          // Remove scrolled class and sticky behavior from navbar
+          navbar.removeClass('scrolled');
+          $('body').removeClass('navbar-sticky');
+        }
+      });
+      
+      // Handle window resize to recalculate heights
+      $(window).resize(function() {
+        if (header.hasClass('scrolled')) {
+          updateNavbarPosition();
+        }
+      });
+    });
+  </script>
 
 </body>
 
