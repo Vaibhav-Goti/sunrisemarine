@@ -5,10 +5,13 @@
   <title>Sunrise Marine - Marine Equipment and Services</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Sunrise Marine - Your trusted supplier of marine equipment, navigation systems, automation solutions, and safety equipment">
+  <meta name="description"
+    content="Sunrise Marine - Your trusted supplier of marine equipment, navigation systems, automation solutions, and safety equipment">
   <meta name="keywords" content="marine equipment, navigation systems, automation, safety equipment, marine supplies">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -27,7 +30,7 @@
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="css/style.css?v=1.2">
-  
+
   <!-- Sticky Header Styles -->
   <style>
     .header-top {
@@ -35,101 +38,235 @@
       position: relative;
       z-index: 1000;
     }
-    
-    .header-top.scrolled {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      background-color: #ffffff !important;
-      border: none !important;
-      outline: none !important;
+
+    /* Desktop: Show sticky header when scrolled */
+    @media (min-width: 992px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+
+      /* Force white background on all header elements */
+      .header-top.scrolled,
+      .header-top.scrolled *,
+      .header-top.scrolled .container,
+      .header-top.scrolled .container * {
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons,
+      .header-top.scrolled .company-name {
+        background-color: #ffffff !important;
+      }
+
+      .header-top.scrolled .container {
+        padding: 0.75rem 0;
+      }
+
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.95rem !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.85rem;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.7rem;
+      }
+
+      .header-top.scrolled img {
+        max-height: 45px !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        margin-bottom: 0;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 1rem;
+      }
+
+      .header-top.scrolled .row {
+        align-items: center;
+      }
+
+      /* Add padding to body when header is sticky on desktop */
+      body.header-sticky {
+        padding-top: 85px;
+      }
+
+      /* Override Bootstrap d-none d-lg-block classes when scrolled */
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        display: block !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+      }
+
+      .header-top.scrolled .d-none.d-lg-block {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3:not(:first-child) {
+        display: block !important;
+      }
+
+      .header-top.scrolled .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+      }
+
+      .header-top.scrolled .col-lg-3 {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3.d-none {
+        display: block !important;
+      }
+
+      .header-top.scrolled .d-none {
+        display: block !important;
+      }
+
+      .header-top.scrolled .container .row .col-lg-3 {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3:nth-child(2),
+      .header-top.scrolled .col-lg-3:nth-child(3),
+      .header-top.scrolled .col-lg-3:nth-child(4) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4,
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        color: #333 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon span {
+        font-size: 1rem !important;
+        color: #007bff !important;
+        display: inline-block !important;
+      }
     }
-    
-    /* Force white background on all header elements */
-    .header-top.scrolled,
-    .header-top.scrolled *,
-    .header-top.scrolled .container,
-    .header-top.scrolled .container * {
-      background-color: #ffffff !important;
-      border: none !important;
-      outline: none !important;
+
+    /* Mobile: Better sticky behavior */
+    @media (max-width: 991px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transform: none;
+        /* Don't hide completely */
+        opacity: 1;
+        visibility: visible;
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hide contact icons on mobile scroll to save space */
+      .header-top.scrolled .d-none.d-lg-block {
+        display: none !important;
+      }
+
+      .header-top.scrolled .container {
+        padding: 0.5rem 0;
+      }
+
+      .header-top.scrolled img {
+        max-height: 40px !important;
+      }
+
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.9rem !important;
+      }
+
+      /* Keep the toggle button visible and correctly colored */
+      .header-top.scrolled .js-menu-toggle {
+        color: #007bff !important;
+      }
+
+      body.header-sticky {
+        padding-top: 60px;
+        /* Space for the compact mobile sticky header */
+      }
     }
-    
-    /* Ensure header elements don't have any white space */
-    .header-top.scrolled .quick-contact-icons,
-    .header-top.scrolled .company-name {
-      background-color: #ffffff !important;
-    }
-    
-    .header-top.scrolled .container {
-      padding: 0.75rem 0;
-    }
-    
-    .header-top.scrolled .company-name h3 {
-      font-size: 0.95rem !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      font-size: 0.85rem;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.7rem;
-    }
-    
-    .header-top.scrolled img {
-      max-height: 45px !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      margin-bottom: 0;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon {
-      font-size: 1rem;
-    }
-    
-    .header-top.scrolled .row {
-      align-items: center;
-    }
-    
-    /* Add padding to body when header is sticky */
-    body.header-sticky {
-      padding-top: 85px;
-    }
-    
+
+    /* Smooth transition for all elements */
     .header-top * {
       transition: all 0.3s ease;
     }
-    
+
     /* Navbar height reduction styles */
     .site-navbar {
       transition: all 0.3s ease;
     }
-    
+
     .site-navbar.scrolled {
       padding: 0.25rem 0 !important;
       background-color: #007bff !important;
       border: none !important;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     .site-navbar.scrolled .nav-link {
       padding: 0.4rem 1rem !important;
       font-size: 0.9rem;
     }
-    
+
     .site-navbar.scrolled .site-menu {
       margin-bottom: 0;
     }
-    
+
     .site-navbar.scrolled .container {
       background-color: #007bff;
     }
-    
+
     .site-navbar.scrolled {
       position: fixed;
       left: 0;
@@ -140,38 +277,48 @@
       padding-top: 0 !important;
       padding-bottom: 0.25rem !important;
     }
-    
-    .header-top.scrolled + .site-navbar.scrolled {
-      margin-top: 0 !important;
+
+    /* Desktop: Navbar below header */
+    @media (min-width: 992px) {
+      .header-top.scrolled+.site-navbar.scrolled {
+        margin-top: 0 !important;
+      }
+
+      body.header-sticky.navbar-sticky {
+        padding-top: 90px;
+      }
     }
-    
-    body.header-sticky.navbar-sticky {
-      padding-top: 90px;
+
+    /* Mobile: Navbar at top when header is hidden */
+    @media (max-width: 991px) {
+      .site-navbar.scrolled {
+        top: 0 !important;
+      }
+
+      body.navbar-sticky {
+        padding-top: 50px;
+      }
     }
-    
-    .site-navbar {
-      transition: all 0.3s ease;
-    }
-    
+
     .site-navbar.scrolled {
       margin-top: 0;
       margin-bottom: 0;
     }
-    
-    .header-top.scrolled + .site-navbar.scrolled {
+
+    .header-top.scrolled+.site-navbar.scrolled {
       margin-top: 0;
     }
-    
+
     .site-navbar.scrolled::before,
     .site-navbar.scrolled::after {
       display: none;
     }
-    
+
     .header-top.scrolled {
       border-bottom: none !important;
       outline: none !important;
     }
-    
+
     .site-navbar.scrolled {
       border-top: none !important;
       border-bottom: none !important;
@@ -179,7 +326,7 @@
       border-right: none !important;
       outline: none !important;
     }
-    
+
     .site-navbar.scrolled,
     .site-navbar.scrolled *,
     .site-navbar.scrolled .container,
@@ -189,214 +336,74 @@
       outline: none !important;
       box-shadow: none !important;
     }
-    
+
     .site-navbar.scrolled .nav-link {
       background-color: transparent !important;
       border: none !important;
     }
-    
+
     .site-navbar.scrolled {
       margin: 0 !important;
       padding: 0.25rem 0 !important;
     }
-    
+
     .site-navbar.scrolled .site-navigation,
     .site-navbar.scrolled .site-menu,
     .site-navbar.scrolled .site-menu li {
       background-color: #007bff !important;
     }
-    
-    /* Keep dropdown background white when scrolled */
+
     .site-navbar.scrolled .site-menu .dropdown {
       background-color: #ffffff !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li {
       background-color: #ffffff !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li a {
       background-color: #ffffff !important;
       color: #333 !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li a:hover {
       background-color: #f8f9fa !important;
       color: #007bff !important;
     }
-    
-    /* Override Bootstrap d-none d-lg-block classes when scrolled */
-    .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important;
-    }
-    
-    .header-top.scrolled .d-none.d-lg-block {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3:not(:first-child) {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .row {
-      display: flex !important;
-      flex-wrap: wrap !important;
-    }
-    
-    .header-top.scrolled .col-lg-3 {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3.d-none {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .d-none {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .container .row .col-lg-3 {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3:nth-child(2),
-    .header-top.scrolled .col-lg-3:nth-child(3),
-    .header-top.scrolled .col-lg-3:nth-child(4) {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4,
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.8rem !important;
-      line-height: 1.2 !important;
-      color: #333 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon span {
-      font-size: 1rem !important;
+
+    /* FIX: Mobile sidebar active link color */
+    .site-mobile-menu .site-nav-wrap li.active>a,
+    .site-mobile-menu .site-nav-wrap li.current-menu-item>a {
       color: #007bff !important;
-      display: inline-block !important;
-    }
-    
-    /* Responsive adjustments for header icons */
-    @media (max-width: 992px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        display: block !important;
-        flex: 0 0 33.333%;
-      }
-      
-      .header-top.scrolled .quick-contact-icons {
-        display: flex !important;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.75rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.9rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .header-top.scrolled .container {
-        padding: 0.5rem 0;
-      }
-      
-      .header-top.scrolled .company-name h3 {
-        font-size: 0.85rem !important;
-      }
-      
-      .header-top.scrolled img {
-        max-height: 35px !important;
-      }
-      
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 50%;
-        margin-bottom: 0.5rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.7rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.6rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.8rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 100%;
-        margin-bottom: 0.25rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.55rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.75rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      /* Bootstrap primary blue */
+      font-weight: 600;
+      background-color: #f8f9fa;
+      /* light highlight */
     }
   </style>
 
   <style>
-    .address-card { border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
-    .address-card h2 { font-weight: 600; }
-    .address-card address { font-size: 1.05rem; line-height: 1.9; }
-    .map-embed { width: 100%; min-height: 360px; border: 0; border-radius: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+    .address-card {
+      border-radius: 6px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    }
+
+    .address-card h2 {
+      font-weight: 600;
+    }
+
+    .address-card address {
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    .map-embed {
+      width: 100%;
+      min-height: 360px;
+      border: 0;
+      border-radius: 6px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    }
   </style>
 
 </head>
@@ -420,9 +427,12 @@
         <div class="row align-items-center">
           <div class="col-6 col-lg-3">
             <a href="index.php" class="d-flex align-items-center text-decoration-none">
-              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 60px; width: auto; flex-shrink: 0;">
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3"
+                style="max-height: 60px; width: auto; flex-shrink: 0;">
               <div class="company-name">
-                <h3 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #333; line-height: 1.2;">Sunrise Marine Enterprise</h3>
+                <h3 class="mb-0"
+                  style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #333; line-height: 1.2;">
+                  Sunrise Marine Enterprise</h3>
               </div>
             </a>
           </div>
@@ -445,7 +455,7 @@
                 <span class="icon-phone text-primary"></span>
               </div>
               <div class="text">
-                <span class="h4 d-block">	+91 278 2560837</span> 
+                <span class="h4 d-block"> +91 278 2560837</span>
                 <span class="caption-text">Office phone</span>
               </div>
             </div>
@@ -464,53 +474,46 @@
           </div>
 
           <div class="col-6 d-block d-lg-none text-right">
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
                 class="icon-menu h3"></span></a>
           </div>
         </div>
       </div>
-            
+
       <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
-      <div class="container">
-        <div class="d-flex align-items-center">
-          
-          <div class="mx-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                <li>
-                  <a href="index.php" class="nav-link text-left">Home</a>
-                </li>
-                <li>
-                  <a href="about.html" class="nav-link text-left">About Us</a>
-                </li>
-                <li class="has-children">
-                  <a href="#" class="nav-link text-left">Products</a>
-                  <ul class="dropdown">
-                    <li><a href="navigation.html">Navigation equipment</a></li>
-                    <li><a href="automation.html">Automation systems</a></li>
-                    <li><a href="anemometer.html">Anemometer equipment</a></li>
-                    <li><a href="machinery.html">Marine machinery</a></li>
-                    <li><a href="drill.html">Drill rig equipment</a></li>
-                    <li><a href="marine-antiques.html">Marine entiquies</a></li>
-                  </ul>
-                </li>
-                <li class="active">
-                  <a href="contact.html" class="nav-link text-left">Contact</a>
-                </li>
-              </ul>                                                                                                                                                                                                                                                                                          </ul>
-            </nav>
-
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <div class="mx-auto">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                  <li>
+                    <a href="index.php" class="nav-link text-left">Home</a>
+                  </li>
+                  <li>
+                    <a href="about.html" class="nav-link text-left">About Us</a>
+                  </li>
+                  <li class="has-children">
+                    <a href="#" class="nav-link text-left">Products</a>
+                    <ul class="dropdown">
+                      <li><a href="navigation.html">Navigation equipment</a></li>
+                      <li><a href="automation.html">Automation systems</a></li>
+                      <li><a href="anemometer.html">Anemometer equipment</a></li>
+                      <li><a href="machinery.html">Marine machinery</a></li>
+                      <li><a href="drill.html">Drill rig equipment</a></li>
+                      <li><a href="marine-antiques.html">Marine entiquies</a></li>
+                    </ul>
+                  </li>
+                  <li class="active">
+                    <a href="contact.html" class="nav-link text-left">Contact</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-          
-         
         </div>
       </div>
+    </div>
 
-    </div>
-    
-    </div>
-    
     <div class="intro-section site-blocks-cover innerpage" style="background-image: url('images1/p7.jpg');">
       <div class="container">
         <div class="row align-items-center text-center border">
@@ -577,12 +580,11 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <iframe class="map-embed" loading="lazy" allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
+            <iframe class="map-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=Alang%20Ship%20Breaking%20Yard%2C%20Gujarat%2C%20India&output=embed"></iframe>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
 
     <div class="footer bg-light">
@@ -590,149 +592,171 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="d-flex align-items-center mb-4">
-              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 50px; width: auto; flex-shrink: 0;">
-              <h4 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise Marine Enterprise</h4>
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3"
+                style="max-height: 50px; width: auto; flex-shrink: 0;">
+              <h4 class="mb-0"
+                style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise
+                Marine Enterprise</h4>
             </div>
-            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 25 years of experience, we provide comprehensive marine equipment solutions worldwide.</p>  
+            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 27
+              years of experience, we provide comprehensive marine equipment solutions worldwide.</p>
             <p><a href="about.html">Learn More</a></p>
           </div>
           <div class="col-lg-3">
             <h3 class="footer-heading"><span>Our Company</span></h3>
             <ul class="list-unstyled">
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
           <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Our Products</span></h3>
-              <ul class="list-unstyled">
-                  <li><a href="navigation.html">Navigation Equipment</a></li>
-                  <li><a href="automation.html">Automation Systems</a></li>
-                  <li><a href="anemometer.html">Anemometer Equipment</a></li>
-                  <li><a href="machinery.html">Marine Machinery</a></li>
-                  <li><a href="drill.html">Drill Rig Equipment</a></li>
-                  <li><a href="marine-antiques.html">Marine Entiquies</a></li>
-              </ul>
+            <h3 class="footer-heading"><span>Our Products</span></h3>
+            <ul class="list-unstyled">
+              <li><a href="navigation.html">Navigation Equipment</a></li>
+              <li><a href="automation.html">Automation Systems</a></li>
+              <li><a href="anemometer.html">Anemometer Equipment</a></li>
+              <li><a href="machinery.html">Marine Machinery</a></li>
+              <li><a href="drill.html">Drill Rig Equipment</a></li>
+              <li><a href="marine-antiques.html">Marine Entiquies</a></li>
+            </ul>
           </div>
           <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Contact Us</span></h3>
-              <ul class="list-unstyled">
-                  <li>Email: info@sunrise-marine.com</li>
-                  <li>Phone: +91 278 2560837</li>
-                  <li>Bhavnagar, India</li>
-                  <li><a href="contact.html">Send Enquiry</a></li>
-                  <li><a href="contact.html">Technical Support</a></li>
-              </ul>
+            <h3 class="footer-heading"><span>Contact Us</span></h3>
+            <ul class="list-unstyled">
+              <li>Email: info@sunrise-marine.com</li>
+              <li>Phone: +91 278 2560837</li>
+              <li>Bhavnagar, India</li>
+              <li><a href="contact.html">Send Enquiry</a></li>
+              <li><a href="contact.html">Technical Support</a></li>
+            </ul>
           </div>
         </div>
 
         <div class="row">
           <div class="col-12">
             <div class="copyright">
-                <p>
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Sunrise Marine
-                </p>
+              <p>
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | Sunrise Marine
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-  <!-- loader -->
-  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+          stroke="#ff5e15" />
+      </svg></div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
 
 
 
 
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 
-  <script>
-    // Add reCAPTCHA script
-    document.write('<script src="https://www.google.com/recaptcha/api.js" async defer><\/script>');
+    <script>
+      // Add reCAPTCHA script
+      document.write('<script src="https://www.google.com/recaptcha/api.js" async defer><\/script>');
 
-    // Handle URL parameters for form submission status
-    window.onload = function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const status = urlParams.get('status');
-      const form = document.getElementById('contactForm');
-      
-      if (status === 'success') {
-        alert('Thank you! Your message has been sent successfully.');
-      } else if (status === 'error') {
-        alert('Sorry, there was an error sending your message. Please try again later.');
-      } else if (status === 'captcha_failed') {
-        alert('Please verify that you are not a robot.');
-      }
-      
-      // Clear URL parameters
-      if (status) {
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    };
-  </script>
-  
-  <!-- Sticky Header and Navbar JavaScript -->
-  <script>
-    $(document).ready(function() {
-      var header = $('.header-top');
-      var navbar = $('.site-navbar');
-      var scrollThreshold = 100; // Start shrinking after 100px scroll
-      
-      function updateNavbarPosition() {
-        if (header.hasClass('scrolled')) {
-          var headerHeight = header.outerHeight();
-          navbar.css('top', headerHeight + 'px');
+      // Handle URL parameters for form submission status
+      window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const form = document.getElementById('contactForm');
+
+        if (status === 'success') {
+          alert('Thank you! Your message has been sent successfully.');
+        } else if (status === 'error') {
+          alert('Sorry, there was an error sending your message. Please try again later.');
+        } else if (status === 'captcha_failed') {
+          alert('Please verify that you are not a robot.');
         }
-      }
-      
-      $(window).scroll(function() {
-        var scrollTop = $(this).scrollTop();
-        
-        if (scrollTop > scrollThreshold) {
-          // Add scrolled class and sticky behavior to header
-          header.addClass('scrolled');
-          $('body').addClass('header-sticky');
-          
-          // Add scrolled class and sticky behavior to navbar
-          navbar.addClass('scrolled');
-          $('body').addClass('navbar-sticky');
-          
-          // Update navbar position after a short delay to ensure header height is calculated
-          setTimeout(updateNavbarPosition, 10);
-        } else {
-          // Remove scrolled class and sticky behavior from header
-          header.removeClass('scrolled');
-          $('body').removeClass('header-sticky');
-          
-          // Remove scrolled class and sticky behavior from navbar
-          navbar.removeClass('scrolled');
-          $('body').removeClass('navbar-sticky');
+
+        // Clear URL parameters
+        if (status) {
+          window.history.replaceState({}, document.title, window.location.pathname);
         }
+      };
+    </script>
+
+    <!-- Sticky Header and Navbar JavaScript -->
+    <script>
+      $(document).ready(function () {
+        var header = $('.header-top');
+        var navbar = $('.site-navbar');
+        var scrollThreshold = 100; // Start shrinking after 100px scroll
+
+        function updateNavbarPosition() {
+          if (navbar.hasClass('scrolled')) {
+            var windowWidth = $(window).width();
+
+            // On mobile (< 992px), navbar goes to top since header is hidden
+            if (windowWidth < 992) {
+              navbar.css('top', '0px');
+            } else {
+              // On desktop, position navbar below the header
+              if (header.hasClass('scrolled')) {
+                var headerHeight = header.outerHeight();
+                navbar.css('top', headerHeight + 'px');
+              }
+            }
+          }
+        }
+
+        $(window).scroll(function () {
+          var scrollTop = $(this).scrollTop();
+
+          if (scrollTop > scrollThreshold) {
+            // Add scrolled class and sticky behavior to header
+            header.addClass('scrolled');
+            $('body').addClass('header-sticky');
+
+            // Add scrolled class and sticky behavior to navbar
+            navbar.addClass('scrolled');
+            $('body').addClass('navbar-sticky');
+
+            // Update navbar position after a short delay to ensure header height is calculated
+            setTimeout(updateNavbarPosition, 10);
+          } else {
+            // Remove scrolled class and sticky behavior from header
+            header.removeClass('scrolled');
+            $('body').removeClass('header-sticky');
+
+            // Remove scrolled class and sticky behavior from navbar
+            navbar.removeClass('scrolled');
+            $('body').removeClass('navbar-sticky');
+
+            // Reset navbar top position
+            navbar.css('top', '');
+          }
+        });
+
+        // Handle window resize to recalculate heights
+        $(window).resize(function () {
+          if (navbar.hasClass('scrolled')) {
+            updateNavbarPosition();
+          }
+        });
       });
-      
-      // Handle window resize to recalculate heights
-      $(window).resize(function() {
-        if (header.hasClass('scrolled')) {
-          updateNavbarPosition();
-        }
-      });
-    });
-  </script>
+    </script>
 
 </body>
 
