@@ -8,12 +8,14 @@
   <meta name="description" content="Marine drill rigs and equipment for offshore operations">
   <meta name="keywords" content="drill rigs, marine drilling, offshore equipment, drilling machinery">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css"> 
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
@@ -23,7 +25,7 @@
   <link rel="stylesheet" href="css/aos.css">
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/style.css?v=1.2">
-  
+
   <!-- Sticky Header Styles -->
   <style>
     .header-top {
@@ -31,101 +33,235 @@
       position: relative;
       z-index: 1000;
     }
-    
-    .header-top.scrolled {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      background-color: #ffffff !important;
-      border: none !important;
-      outline: none !important;
+
+    /* Desktop: Show sticky header when scrolled */
+    @media (min-width: 992px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+
+      /* Force white background on all header elements */
+      .header-top.scrolled,
+      .header-top.scrolled *,
+      .header-top.scrolled .container,
+      .header-top.scrolled .container * {
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons,
+      .header-top.scrolled .company-name {
+        background-color: #ffffff !important;
+      }
+
+      .header-top.scrolled .container {
+        padding: 0.75rem 0;
+      }
+
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.95rem !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.85rem;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.7rem;
+      }
+
+      .header-top.scrolled img {
+        max-height: 45px !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        margin-bottom: 0;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 1rem;
+      }
+
+      .header-top.scrolled .row {
+        align-items: center;
+      }
+
+      /* Add padding to body when header is sticky on desktop */
+      body.header-sticky {
+        padding-top: 85px;
+      }
+
+      /* Override Bootstrap d-none d-lg-block classes when scrolled */
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        display: block !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+      }
+
+      .header-top.scrolled .d-none.d-lg-block {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3:not(:first-child) {
+        display: block !important;
+      }
+
+      .header-top.scrolled .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+      }
+
+      .header-top.scrolled .col-lg-3 {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3.d-none {
+        display: block !important;
+      }
+
+      .header-top.scrolled .d-none {
+        display: block !important;
+      }
+
+      .header-top.scrolled .container .row .col-lg-3 {
+        display: block !important;
+      }
+
+      .header-top.scrolled .col-lg-3:nth-child(2),
+      .header-top.scrolled .col-lg-3:nth-child(3),
+      .header-top.scrolled .col-lg-3:nth-child(4) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .text .h4,
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        color: #333 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .header-top.scrolled .quick-contact-icons .icon span {
+        font-size: 1rem !important;
+        color: #007bff !important;
+        display: inline-block !important;
+      }
     }
-    
-    /* Force white background on all header elements */
-    .header-top.scrolled,
-    .header-top.scrolled *,
-    .header-top.scrolled .container,
-    .header-top.scrolled .container * {
-      background-color: #ffffff !important;
-      border: none !important;
-      outline: none !important;
+
+    /* Mobile: Better sticky behavior */
+    @media (max-width: 991px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transform: none;
+        /* Don't hide completely */
+        opacity: 1;
+        visibility: visible;
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hide contact icons on mobile scroll to save space */
+      .header-top.scrolled .d-none.d-lg-block {
+        display: none !important;
+      }
+
+      .header-top.scrolled .container {
+        padding: 0.5rem 0;
+      }
+
+      .header-top.scrolled img {
+        max-height: 40px !important;
+      }
+
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.9rem !important;
+      }
+
+      /* Keep the toggle button visible and correctly colored */
+      .header-top.scrolled .js-menu-toggle {
+        color: #007bff !important;
+      }
+
+      body.header-sticky {
+        padding-top: 60px;
+        /* Space for the compact mobile sticky header */
+      }
     }
-    
-    /* Ensure header elements don't have any white space */
-    .header-top.scrolled .quick-contact-icons,
-    .header-top.scrolled .company-name {
-      background-color: #ffffff !important;
-    }
-    
-    .header-top.scrolled .container {
-      padding: 0.75rem 0;
-    }
-    
-    .header-top.scrolled .company-name h3 {
-      font-size: 0.95rem !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      font-size: 0.85rem;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.7rem;
-    }
-    
-    .header-top.scrolled img {
-      max-height: 45px !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      margin-bottom: 0;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon {
-      font-size: 1rem;
-    }
-    
-    .header-top.scrolled .row {
-      align-items: center;
-    }
-    
-    /* Add padding to body when header is sticky */
-    body.header-sticky {
-      padding-top: 85px;
-    }
-    
+
+    /* Smooth transition for all elements */
     .header-top * {
       transition: all 0.3s ease;
     }
-    
+
     /* Navbar height reduction styles */
     .site-navbar {
       transition: all 0.3s ease;
     }
-    
+
     .site-navbar.scrolled {
       padding: 0.25rem 0 !important;
       background-color: #007bff !important;
       border: none !important;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     .site-navbar.scrolled .nav-link {
       padding: 0.4rem 1rem !important;
       font-size: 0.9rem;
     }
-    
+
     .site-navbar.scrolled .site-menu {
       margin-bottom: 0;
     }
-    
+
     .site-navbar.scrolled .container {
       background-color: #007bff;
     }
-    
+
     .site-navbar.scrolled {
       position: fixed;
       left: 0;
@@ -136,38 +272,48 @@
       padding-top: 0 !important;
       padding-bottom: 0.25rem !important;
     }
-    
-    .header-top.scrolled + .site-navbar.scrolled {
-      margin-top: 0 !important;
+
+    /* Desktop: Navbar below header */
+    @media (min-width: 992px) {
+      .header-top.scrolled+.site-navbar.scrolled {
+        margin-top: 0 !important;
+      }
+
+      body.header-sticky.navbar-sticky {
+        padding-top: 90px;
+      }
     }
-    
-    body.header-sticky.navbar-sticky {
-      padding-top: 90px;
+
+    /* Mobile: Navbar at top when header is hidden */
+    @media (max-width: 991px) {
+      .site-navbar.scrolled {
+        top: 0 !important;
+      }
+
+      body.navbar-sticky {
+        padding-top: 50px;
+      }
     }
-    
-    .site-navbar {
-      transition: all 0.3s ease;
-    }
-    
+
     .site-navbar.scrolled {
       margin-top: 0;
       margin-bottom: 0;
     }
-    
-    .header-top.scrolled + .site-navbar.scrolled {
+
+    .header-top.scrolled+.site-navbar.scrolled {
       margin-top: 0;
     }
-    
+
     .site-navbar.scrolled::before,
     .site-navbar.scrolled::after {
       display: none;
     }
-    
+
     .header-top.scrolled {
       border-bottom: none !important;
       outline: none !important;
     }
-    
+
     .site-navbar.scrolled {
       border-top: none !important;
       border-bottom: none !important;
@@ -175,7 +321,7 @@
       border-right: none !important;
       outline: none !important;
     }
-    
+
     .site-navbar.scrolled,
     .site-navbar.scrolled *,
     .site-navbar.scrolled .container,
@@ -185,206 +331,39 @@
       outline: none !important;
       box-shadow: none !important;
     }
-    
+
     .site-navbar.scrolled .nav-link {
       background-color: transparent !important;
       border: none !important;
     }
-    
+
     .site-navbar.scrolled {
       margin: 0 !important;
       padding: 0.25rem 0 !important;
     }
-    
+
     .site-navbar.scrolled .site-navigation,
     .site-navbar.scrolled .site-menu,
     .site-navbar.scrolled .site-menu li {
       background-color: #007bff !important;
     }
-    
-    /* Keep dropdown background white when scrolled */
+
     .site-navbar.scrolled .site-menu .dropdown {
       background-color: #ffffff !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li {
       background-color: #ffffff !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li a {
       background-color: #ffffff !important;
       color: #333 !important;
     }
-    
+
     .site-navbar.scrolled .site-menu .dropdown li a:hover {
       background-color: #f8f9fa !important;
       color: #007bff !important;
-    }
-    
-    /* Override Bootstrap d-none d-lg-block classes when scrolled */
-    .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important;
-    }
-    
-    .header-top.scrolled .d-none.d-lg-block {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3:not(:first-child) {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .row {
-      display: flex !important;
-      flex-wrap: wrap !important;
-    }
-    
-    .header-top.scrolled .col-lg-3 {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3.d-none {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .d-none {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .container .row .col-lg-3 {
-      display: block !important;
-    }
-    
-    .header-top.scrolled .col-lg-3:nth-child(2),
-    .header-top.scrolled .col-lg-3:nth-child(3),
-    .header-top.scrolled .col-lg-3:nth-child(4) {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4,
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.8rem !important;
-      line-height: 1.2 !important;
-      color: #333 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon span {
-      font-size: 1rem !important;
-      color: #007bff !important;
-      display: inline-block !important;
-    }
-    
-    /* Responsive adjustments for header icons */
-    @media (max-width: 992px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        display: block !important;
-        flex: 0 0 33.333%;
-      }
-      
-      .header-top.scrolled .quick-contact-icons {
-        display: flex !important;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.75rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.9rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .header-top.scrolled .container {
-        padding: 0.5rem 0;
-      }
-      
-      .header-top.scrolled .company-name h3 {
-        font-size: 0.85rem !important;
-      }
-      
-      .header-top.scrolled img {
-        max-height: 35px !important;
-      }
-      
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 50%;
-        margin-bottom: 0.5rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.7rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.6rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.8rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 100%;
-        margin-bottom: 0.25rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.55rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.75rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 
@@ -392,14 +371,17 @@
     .product-grid {
       padding: 4rem 0;
     }
+
     .product-card {
       margin-bottom: 30px;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
+
     .product-card:hover {
       transform: translateY(-5px);
     }
+
     .product-image {
       position: relative;
       height: 250px;
@@ -410,6 +392,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .product-image img {
       max-width: 90%;
       max-height: 90%;
@@ -419,48 +402,67 @@
       display: block;
       margin: auto;
     }
+
     .product-card:hover .product-image img {
       transform: scale(1.05);
     }
+
     .product-info {
       padding: 15px;
       background: #f8f9fa;
       border-radius: 0 0 4px 4px;
     }
+
     .product-info h3 {
       font-size: 1.2rem;
       margin-bottom: 10px;
     }
+
     .feature-card {
       text-align: center;
       padding: 2rem;
       margin-bottom: 1rem;
       background: white;
       border-radius: 8px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+
     .feature-card h3 {
       margin-bottom: 1rem;
       min-height: 2.5rem;
     }
+
     .feature-card p {
       flex-grow: 1;
       margin-bottom: 0;
     }
+
     .feature-icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+
     .modal-dialog {
       max-width: 800px;
     }
+
     .modal-body img {
       max-height: 400px;
       object-fit: contain;
+    }
+
+    /* FIX: Mobile sidebar active link color */
+    .site-mobile-menu .site-nav-wrap li.active>a,
+    .site-mobile-menu .site-nav-wrap li.current-menu-item>a {
+      color: #007bff !important;
+      /* Bootstrap primary blue */
+      font-weight: 600;
+      background-color: #f8f9fa;
+      /* light highlight */
     }
   </style>
 </head>
@@ -483,9 +485,12 @@
         <div class="row align-items-center">
           <div class="col-6 col-lg-3">
             <a href="index.php" class="d-flex align-items-center text-decoration-none">
-              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 60px; width: auto; flex-shrink: 0;">
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3"
+                style="max-height: 60px; width: auto; flex-shrink: 0;">
               <div class="company-name">
-                <h3 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #333; line-height: 1.2;">Sunrise Marine Enterprise</h3>
+                <h3 class="mb-0"
+                  style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.1rem; color: #333; line-height: 1.2;">
+                  Sunrise Marine Enterprise</h3>
               </div>
             </a>
           </div>
@@ -506,8 +511,8 @@
                 <span class="icon-phone text-primary"></span>
               </div>
               <div class="text">
-                <span class="h4 d-block">	+91 278 2560837</span>
-                <span class="caption-text">Office phone</span>
+                <span class="h4 d-block">+91 278 2560837</span>
+                <span class="caption-text">Office Phone</span>
               </div>
             </div>
           </div>
@@ -518,9 +523,13 @@
               </div>
               <div class="text">
                 <span class="h4 d-block">info@sunrise-marine.com</span>
-                <span class="caption-text">office mail</span>
+                <span class="caption-text">Office mail</span>
               </div>
             </div>
+          </div>
+          <div class="col-6 d-block d-lg-none text-right">
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
           </div>
         </div>
       </div>
@@ -536,12 +545,12 @@
                   <li class="has-children active">
                     <a href="#" class="nav-link text-left">Products</a>
                     <ul class="dropdown">
-                      <li><a href="navigation.html">Navigation equipment</a></li>
-                      <li><a href="automation.html">Automation systems</a></li>
-                      <li><a href="anemometer.html">Anemometer equipment</a></li>
-                      <li><a href="machinery.html">Marine machinery</a></li>
-                      <li class="active"><a href="drill.html">Drill rig equipment</a></li>
-                      <li><a href="marine-antiques.html">Marine entiquies</a></li>
+                      <li><a href="navigation.html">Navigation Equipment</a></li>
+                      <li><a href="automation.html">Automation Systems</a></li>
+                      <li><a href="anemometer.html">Anemometer Equipment</a></li>
+                      <li><a href="machinery.html">Marine Machinery</a></li>
+                      <li class="active"><a href="drill.html">Drill Rig Equipment</a></li>
+                      <li><a href="marine-antiques.html">Marine Entiquies</a></li>
                     </ul>
                   </li>
                   <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
@@ -558,7 +567,9 @@
         <div class="row mb-5">
           <div class="col-12">
             <h2 class="text-primary mb-4">Drill Rigs Ship Equipment</h2>
-            <p>Comprehensive range of drilling equipment and machinery for marine drilling operations, ensuring safety, efficiency, and reliability in challenging offshore environments. Our drill rigs and equipment are designed to meet the highest industry standards.</p>
+            <p>Comprehensive range of drilling equipment and machinery for marine drilling operations, ensuring safety,
+              efficiency, and reliability in challenging offshore environments. Our drill rigs and equipment are
+              designed to meet the highest industry standards.</p>
           </div>
         </div>
 
@@ -658,6 +669,91 @@
               </div>
             </div>
           </div>
+
+
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal9">
+              <div class="product-image">
+                <img src="images1/drill/equipments.png" alt="Heavy-Duty Linkage">
+              </div>
+              <div class="product-info">
+                <h3>Heavy-Duty Linkage & Pivot Assembly Kit</h3>
+                <p>A collection of cast-iron and forged steel mounting brackets, hydraulic arm linkages, and pivot pins
+                  for heavy-duty load-bearing machinery.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal10">
+              <div class="product-image">
+                <img src="images1/drill/Circular Chart Recorders.png" alt="Circular Chart Recorders">
+              </div>
+              <div class="product-info">
+                <h3>Circular Chart Recorders</h3>
+                <p>record the pressure during tests of shipboard pipelines, fuel tanks, or subsea equipment to prove
+                  there are no leaks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal11">
+              <div class="product-image">
+                <img src="images1/drill/bushing.png" alt="VARCO Master Bushing">
+              </div>
+              <div class="product-info">
+                <h3>VARCO Master Bushing (Casing Bushing)</h3>
+                <p>A heavy-duty, cast steel assembly for casing strings as they are lowered into or pulled from the
+                  wellbore.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal12">
+              <div class="product-image">
+                <img src="images1/drill/Drill Pipe Elevators.png" alt="Drill Pipe Elevators">
+              </div>
+              <div class="product-info">
+                <h3>Drill Pipe Elevators</h3>
+                <p>mechanical hinged devices used on the rig floor to lift, lower, and suspend heavy pipe strings</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal13">
+              <div class="product-image">
+                <img src="images1/drill/Grooved Pipe Couplings.png" alt="Grooved Pipe Couplings">
+              </div>
+              <div class="product-info">
+                <h3>Grooved Pipe Couplings</h3>
+                <p>used to join two sections of grooved pipe. Each coupling consists of a two-part metallic housing, a
+                  specialized rubber gasket (not visible inside all units, but essential for the seal), and two
+                  bolts/nuts that provide the clamping force</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-3 mb-4">
+            <div class="product-card" data-toggle="modal" data-target="#productModal14">
+              <div class="product-image">
+                <img src="images1/drill/500TON.png" alt="Varco 500-Ton Side Link">
+              </div>
+              <div class="product-info">
+                <h3>Varco 500-Ton Side Link (SL) Elevator/Hoisting Component</h3>
+                <p>heavy-duty hoisting .500-ton safe lifting capacity and is used as part of a hoisting or elevator
+                  system to manage massive drill strings and casing during drilling operations</p>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
 
         <!-- Features Section -->
@@ -703,10 +799,14 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="d-flex align-items-center mb-4">
-              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 50px; width: auto; flex-shrink: 0;">
-              <h4 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise Marine Enterprise</h4>
+              <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3"
+                style="max-height: 50px; width: auto; flex-shrink: 0;">
+              <h4 class="mb-0"
+                style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise
+                Marine Enterprise</h4>
             </div>
-            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 25 years of experience, we provide comprehensive marine equipment solutions worldwide.</p>  
+            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 27
+              years of experience, we provide comprehensive marine equipment solutions worldwide.</p>
             <p><a href="about.html">Learn More</a></p>
           </div>
           <div class="col-lg-3">
@@ -741,7 +841,9 @@
         <div class="row">
           <div class="col-12">
             <div class="copyright">
-              <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Sunrise Marine</p>
+              <p>Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | Sunrise Marine
+              </p>
             </div>
           </div>
         </div>
@@ -767,7 +869,8 @@
             </div>
             <div class="col-md-6">
               <h6>Description</h6>
-              <p>Professional-grade spool equipment designed for efficient drilling operations and pipe handling systems.</p>
+              <p>Professional-grade spool equipment designed for efficient drilling operations and pipe handling
+                systems.</p>
               <h6>Features</h6>
               <ul>
                 <li>High-strength construction</li>
@@ -782,10 +885,415 @@
     </div>
   </div>
 
+
+  <div class="modal fade" id="productModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rotary</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/rotary.png" alt="Rotary" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Description</h6>
+              <p>Professional rotary drilling equipment designed for efficient drilling operations. These systems
+                provide the necessary torque and rotation for deep-well drilling.</p>
+              <h6>Features</h6>
+              <ul>
+                <li>High torque capacity</li>
+                <li>Variable speed control</li>
+                <li>Robust bearing design</li>
+                <li>Easy maintenance access</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="productModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">FD‑1600 Mud Pumps (Triplex)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/self-retracting-sala-sealed.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>FD‑1600 Mud Pumps (Triplex)</h6>
+              <p>Critical equipment for controlling well pressure and preventing blowouts during drilling operations.
+              </p>
+              <h6>Specifications</h6>
+              <ul>
+                <li>Quick access to fluid ends to ease maintenance</li>
+                <li>Rugged construction and field‑proven</li>
+                <li>1,600 horsepower at 120 spm</li>
+                <li>Single‑ and dual‑motor drive configurations (both operate at full 1,600 horsepower)</li>
+                <li>Forged steel cylinders are identical and interchangeable</li>
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div><div class="modal fade" id="productModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">FD‑1600 Mud Pumps (Triplex)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/chiksan high pressure pipe.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Chiksan High Pressure Pipe</h6>
+              
+              <h6>Specifications</h6>
+              <ul>
+              <li>High‑pressure Chiksan pipes for demanding drilling applications</li>
+              <li>Designed for durability and reliability in extreme drilling environments</li>
+              <li>Integrated into the SEAM Rig’s modular equipment suite for safe and efficient operations</li>
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  
+  <div class="modal fade" id="productModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Low Torque Valve</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/low torque valve.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Low Torque Valve</h6>
+              
+              <h6>Specifications</h6>
+              <ul>
+             <li>Low torque valve systems for smooth operation in drilling rigs</li>
+             <li>Designed for efficient and reliable performance in heavy‑duty industrial applications</li>
+             <li>Integrated into the SEAM Rig’s modular equipment suite</li>
+               
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   
+  <div class="modal fade" id="productModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Horning Tool</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/horning tool.jpg" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Horning Tool Specification</h6>
+              <ul>
+            <li>Specialized horning tools for precision drilling operations</li>
+            <li>Designed to create accurate internal diameters in drilled holes</li>
+            <li>Organized equipment set for efficient use in industrial applications</li>
+            <li>Integrated into the SEAM Rig’s modular equipment suite</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="productModal7" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cylinder Honing Machine</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/cylinder honing machine.jpg" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Cylinder Honing Machine Specification</h6>
+              <ul>
+           <li>Professional cylinder honing machines for surface finishing</li>
+           <li>Designed for precision work on cylindrical surfaces</li>
+           <li>Ensures high‑quality finishing in industrial and mechanical applications</li>
+           <li>Integrated into the SEAM Rig’s modular equipment suite</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="productModal9" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Heavy‑Duty Linkage & Pivot Assembly Kit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/equipments.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Heavy‑Duty Linkage & Pivot Assembly Kit</h6>
+              <ul>
+          <li>Comprehensive kit with brackets, arms, clamps, and pivot joints</li>
+          <li>Includes smaller components such as bolts, washers, and bushings for complete assembly</li>
+          <li>Designed for rugged use in heavy machinery and drilling rigs</li>
+          <li>Integrated into the SEAM Rig’s modular equipment suite for durability and reliability</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="productModal10" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Circular Chart Recorders</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/Circular Chart Recorders.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Circular Chart Recorders</h6>
+              <ul>  
+              <li>Devices used to monitor and record variables such as temperature, pressure, or flow rate</li>
+              <li>Provide continuous logging of operational parameters in drilling rigs</li>
+              <li>Essential for maintaining safety and efficiency in industrial environments</li>
+              <li>Integrated into the SEAM Rig’s monitoring and control systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="productModal11" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">VARCO Master Bushing (Casing Bushing)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/bushing.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>VARCO Master Bushing (Casing Bushing)</h6>
+              <ul>  
+            Heavy‑duty, cast steel assembly for casing strings
+
+              <li>Used when casing strings are lowered into or pulled from the wellbore</li>
+              <li>Designed to withstand significant mechanical stress in drilling operations</li>
+              <li>Integrated into the SEAM Rig’s equipment suite for reliability and durability</li>  
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="productModal12" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Drill Pipe Elevators</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/Drill Pipe Elevators.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Features & specification </h6>
+              <ul>  
+                <li>Mechanical hinged devices used on the rig floor</li>
+                <li>Designed to lift, lower, and suspend heavy pipe strings</li>
+                <li>Built for robust handling in demanding drilling operations</li>
+                <li>Integrated into the SEAM Rig’s equipment suite for safe and efficient pipe management</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="productModal13" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Grooved Pipe Couplings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/Grooved Pipe Couplings.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Features & specification </h6>
+              <ul>  
+                <li>Heavy‑duty couplings designed to securely join pipes in drilling systems</li>
+                <li>Allow flexibility and ease of installation while maintaining strong seals</li>
+                <li>Available in multiple sizes and configurations for different pipe diameters</li>
+                <li>Integrated into the SEAM Rig’s piping and connection systems for reliability under demanding conditions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="productModal14" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">VARCO 500‑Ton SL Elevator</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/500TON.png" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Features & specification </h6>
+              <ul>  
+                <li>Heavy‑duty hoisting component designed for lifting and handling drill pipe, casing, and other tubulars</li>
+                <li>Built to withstand extremely heavy loads safely and efficiently</li>
+                <li>Side link design with robust locking mechanism for secure operations</li>
+                <li>Integrated into the SEAM Rig’s hoisting system for reliable performance in demanding drilling environments</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Mud Cross BOP Modal -->
+  <div class="modal fade" id="productModal8" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Mud Cross BOP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="images1/drill/mud cross bop.jpg" alt="Mud Cross BOP" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <h6>Blowout Preventer (BOP)</h6>
+              <p>Critical equipment for controlling well pressure and preventing blowouts during drilling operations.
+              </p>
+              <h6>Specifications</h6>
+              <ul>
+                <li>13 5/8" 10K specification</li>
+                <li>BX159 designation</li>
+                <li>Serial number and manufacturing details stenciled on the unit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Add similar modals for other products -->
 
   <!-- loader -->
-  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        stroke="#ff5e15" />
+    </svg></div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -802,49 +1310,62 @@
   <script src="js/jquery.sticky.js"></script>
   <script src="js/jquery.mb.YTPlayer.min.js"></script>
   <script src="js/main.js"></script>
-  
+
   <!-- Sticky Header and Navbar JavaScript -->
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       var header = $('.header-top');
       var navbar = $('.site-navbar');
       var scrollThreshold = 100; // Start shrinking after 100px scroll
-      
+
       function updateNavbarPosition() {
-        if (header.hasClass('scrolled')) {
-          var headerHeight = header.outerHeight();
-          navbar.css('top', headerHeight + 'px');
+        if (navbar.hasClass('scrolled')) {
+          var windowWidth = $(window).width();
+
+          // On mobile (< 992px), navbar goes to top since header is hidden
+          if (windowWidth < 992) {
+            navbar.css('top', '0px');
+          } else {
+            // On desktop, position navbar below the header
+            if (header.hasClass('scrolled')) {
+              var headerHeight = header.outerHeight();
+              navbar.css('top', headerHeight + 'px');
+            }
+          }
         }
       }
-      
-      $(window).scroll(function() {
+
+      $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
-        
+
         if (scrollTop > scrollThreshold) {
           // Add scrolled class and sticky behavior to header
           header.addClass('scrolled');
           $('body').addClass('header-sticky');
-          
+
           // Add scrolled class and sticky behavior to navbar
           navbar.addClass('scrolled');
           $('body').addClass('navbar-sticky');
-          
+
           // Update navbar position after a short delay to ensure header height is calculated
           setTimeout(updateNavbarPosition, 10);
         } else {
           // Remove scrolled class and sticky behavior from header
           header.removeClass('scrolled');
           $('body').removeClass('header-sticky');
-          
+
           // Remove scrolled class and sticky behavior from navbar
           navbar.removeClass('scrolled');
           $('body').removeClass('navbar-sticky');
+
+          // Reset navbar top position
+          navbar.css('top', '');
         }
       });
-      
+
       // Handle window resize to recalculate heights
-      $(window).resize(function() {
-        if (header.hasClass('scrolled')) {
+      $(window).resize(function () {
+        if (navbar.hasClass('scrolled')) {
           updateNavbarPosition();
         }
       });
@@ -852,4 +1373,5 @@
   </script>
 
 </body>
+
 </html>

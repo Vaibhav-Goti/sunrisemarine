@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Recipients
             $mail->setFrom($_ENV['SMTP_USERNAME'], 'Sunrise Marine');
             $mail->addAddress('sunrisemarine11@gmail.com');
+            $mail->addAddress('	info@sunrise-marine.com'); // Add your second email here
             $mail->addReplyTo($email, $name);
             
             // Content

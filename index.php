@@ -47,6 +47,11 @@
       position: relative;
       margin: 2rem 0;
     }
+    .drill-gallery-container .btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .heading
     {
     
@@ -67,7 +72,7 @@
     }
     
     .drill-gallery-item {
-      flex: 0 0 280px;
+      flex: 0 0 220px;
       position: relative;
       border-radius: 12px;
       overflow: hidden;
@@ -160,72 +165,201 @@
       position: relative;
       z-index: 1000;
     }
-    
-    .header-top.scrolled {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      background-color: #ffffff !important; /* Ensure white background */
-      border: none !important; /* Remove any borders */
-      outline: none !important;
+
+    /* Desktop: Show sticky header when scrolled */
+    @media (min-width: 992px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+      
+      /* Force white background on all header elements */
+      .header-top.scrolled,
+      .header-top.scrolled *,
+      .header-top.scrolled .container,
+      .header-top.scrolled .container * {
+        background-color: #ffffff !important;
+        border: none !important;
+        outline: none !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons,
+      .header-top.scrolled .company-name {
+        background-color: #ffffff !important;
+      }
+      
+      .header-top.scrolled .container {
+        padding: 0.75rem 0;
+      }
+      
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.95rem !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        font-size: 0.85rem;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.7rem;
+      }
+      
+      .header-top.scrolled img {
+        max-height: 45px !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons {
+        margin-bottom: 0;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon {
+        font-size: 1rem;
+      }
+      
+      .header-top.scrolled .row {
+        align-items: center;
+      }
+      
+      /* Add padding to body when header is sticky on desktop */
+      body.header-sticky {
+        padding-top: 85px;
+      }
+      
+      /* Override Bootstrap d-none d-lg-block classes when scrolled */
+      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+      }
+      
+      .header-top.scrolled .d-none.d-lg-block {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .col-lg-3:not(:first-child) {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+      }
+      
+      .header-top.scrolled .col-lg-3 {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .col-lg-3.d-none {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .d-none {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .container .row .col-lg-3 {
+        display: block !important;
+      }
+      
+      .header-top.scrolled .col-lg-3:nth-child(2),
+      .header-top.scrolled .col-lg-3:nth-child(3),
+      .header-top.scrolled .col-lg-3:nth-child(4) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .h4 {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .text .h4,
+      .header-top.scrolled .quick-contact-icons .text .caption-text {
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+        color: #333 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      .header-top.scrolled .quick-contact-icons .icon span {
+        font-size: 1rem !important;
+        color: #007bff !important;
+        display: inline-block !important;
+      }
     }
     
-    /* Force white background on all header elements */
-    .header-top.scrolled,
-    .header-top.scrolled *,
-    .header-top.scrolled .container,
-    .header-top.scrolled .container * {
-      background-color: #ffffff !important;
-      border: none !important;
-      outline: none !important;
-    }
-    
-    /* Ensure header elements don't have any white space */
-    .header-top.scrolled .quick-contact-icons,
-    .header-top.scrolled .company-name {
-      background-color: #ffffff !important;
-    }
-    
-    .header-top.scrolled .container {
-      padding: 0.75rem 0; /* Increased padding to keep icons visible */
-    }
-    
-    .header-top.scrolled .company-name h3 {
-      font-size: 0.95rem !important; /* Slightly larger to maintain readability */
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      font-size: 0.85rem; /* Slightly larger */
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.7rem; /* Slightly larger */
-    }
-    
-    .header-top.scrolled img {
-      max-height: 45px !important; /* Slightly larger logo */
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      margin-bottom: 0;
-    }
-    
-    /* Ensure icons remain visible */
-    .header-top.scrolled .quick-contact-icons .icon {
-      font-size: 1rem; /* Keep icon size readable */
-    }
-    
-    /* Adjust row alignment for reduced header */
-    .header-top.scrolled .row {
-      align-items: center;
-    }
-    
-    /* Add padding to body when header is sticky */
-    body.header-sticky {
-      padding-top: 85px; /* Increased to account for larger header */
+    /* Mobile: Better sticky behavior */
+    @media (max-width: 991px) {
+      .header-top.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transform: none; /* Don't hide completely */
+        opacity: 1;
+        visibility: visible;
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      /* Hide contact icons on mobile scroll to save space */
+      .header-top.scrolled .d-none.d-lg-block {
+        display: none !important;
+      }
+      
+      .header-top.scrolled .container {
+        padding: 0.5rem 0;
+      }
+      
+      .header-top.scrolled img {
+        max-height: 40px !important;
+      }
+      
+      .header-top.scrolled .company-name h3 {
+        font-size: 0.9rem !important;
+      }
+      
+      /* Keep the toggle button visible and correctly colored */
+      .header-top.scrolled .js-menu-toggle {
+        color: #007bff !important;
+      }
+      
+      body.header-sticky {
+        padding-top: 60px; /* Space for the compact mobile sticky header */
+      }
     }
     
     /* Smooth transition for all elements */
@@ -240,9 +374,9 @@
     
     .site-navbar.scrolled {
       padding: 0.25rem 0 !important;
-      background-color: #007bff !important; /* Ensure blue background */
-      border: none !important; /* Remove any borders */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Add subtle shadow */
+      background-color: #007bff !important;
+      border: none !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     
     .site-navbar.scrolled .nav-link {
@@ -254,12 +388,10 @@
       margin-bottom: 0;
     }
     
-    /* Ensure navbar has proper background when sticky */
     .site-navbar.scrolled .container {
       background-color: #007bff;
     }
     
-    /* Ensure navbar stays below header when both are sticky */
     .site-navbar.scrolled {
       position: fixed;
       left: 0;
@@ -269,42 +401,48 @@
       margin-bottom: 0 !important;
       padding-top: 0 !important;
       padding-bottom: 0.25rem !important;
-      /* Top position will be set dynamically by JavaScript */
     }
     
-    /* Ensure absolutely no gap between header and navbar */
-    .header-top.scrolled + .site-navbar.scrolled {
-      margin-top: 0 !important;
+    .btn-group-gap a {
+    margin-left: 20px;
+    text-transform:none;
+}
+    /* Desktop: Navbar below header */
+    @media (min-width: 992px) {
+      .header-top.scrolled + .site-navbar.scrolled {
+        margin-top: 0 !important;
+      }
+      
+      body.header-sticky.navbar-sticky {
+        padding-top: 90px;
+      }
     }
     
-    /* Adjust body padding when both header and navbar are sticky */
-    body.header-sticky.navbar-sticky {
-      padding-top: 90px; /* Reduced padding to match actual heights */
+    /* Mobile: Navbar at top when header is hidden */
+    @media (max-width: 991px) {
+      .site-navbar.scrolled {
+        top: 0 !important;
+      }
+      
+      body.navbar-sticky {
+        padding-top: 50px;
+      }
     }
     
-    /* Ensure smooth transition for navbar positioning */
-    .site-navbar {
-      transition: all 0.3s ease;
-    }
-    
-    /* Remove any default margins that might cause gaps */
     .site-navbar.scrolled {
       margin-top: 0;
       margin-bottom: 0;
     }
     
-    /* Ensure no gaps between header and navbar */
     .header-top.scrolled + .site-navbar.scrolled {
       margin-top: 0;
     }
     
-    /* Remove any potential white space or borders */
     .site-navbar.scrolled::before,
     .site-navbar.scrolled::after {
       display: none;
     }
     
-    /* Ensure seamless connection */
     .header-top.scrolled {
       border-bottom: none !important;
       outline: none !important;
@@ -318,7 +456,6 @@
       outline: none !important;
     }
     
-    /* More aggressive overrides to eliminate any white space */
     .site-navbar.scrolled,
     .site-navbar.scrolled *,
     .site-navbar.scrolled .container,
@@ -329,26 +466,22 @@
       box-shadow: none !important;
     }
     
-    /* Override any potential white backgrounds */
     .site-navbar.scrolled .nav-link {
       background-color: transparent !important;
       border: none !important;
     }
     
-    /* Ensure no white space around navbar */
     .site-navbar.scrolled {
       margin: 0 !important;
       padding: 0.25rem 0 !important;
     }
     
-    /* Force blue background on all navbar elements */
     .site-navbar.scrolled .site-navigation,
     .site-navbar.scrolled .site-menu,
     .site-navbar.scrolled .site-menu li {
       background-color: #007bff !important;
     }
     
-    /* Keep dropdown background white when scrolled */
     .site-navbar.scrolled .site-menu .dropdown {
       background-color: #ffffff !important;
     }
@@ -366,193 +499,102 @@
       background-color: #f8f9fa !important;
       color: #007bff !important;
     }
-    
-    /* Override Bootstrap d-none d-lg-block classes when scrolled */
-    .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-      display: block !important; /* Override d-none when scrolled */
-    }
-    
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important; /* Ensure icons are visible when scrolled */
-    }
-    
-    /* More specific override for Bootstrap classes */
-    .header-top.scrolled .d-none.d-lg-block {
-      display: block !important;
-    }
-    
-    /* Force visibility of contact icons when scrolled */
-    .header-top.scrolled .col-lg-3:not(:first-child) {
-      display: block !important;
-    }
-    
-    /* Ensure proper flex layout when scrolled */
-    .header-top.scrolled .row {
-      display: flex !important;
-      flex-wrap: wrap !important;
-    }
-    
-    /* Make sure all contact icon columns are visible when scrolled */
-    .header-top.scrolled .col-lg-3 {
-      display: block !important;
-    }
-    
-    /* Very specific override for Bootstrap d-none class */
-    .header-top.scrolled .col-lg-3.d-none {
-      display: block !important;
-    }
-    
-    /* Override all Bootstrap display utilities when scrolled */
-    .header-top.scrolled .d-none {
-      display: block !important;
-    }
-    
-    /* Force show all contact icon containers */
-    .header-top.scrolled .container .row .col-lg-3 {
-      display: block !important;
-    }
-    
-    /* Debug: Add a visible border when scrolled to confirm class is applied */
-    /* .header-top.scrolled {
-      border: 2px solid red !important;
-    } */
-    
-    /* Most aggressive override - target the exact elements */
-    .header-top.scrolled .col-lg-3:nth-child(2),
-    .header-top.scrolled .col-lg-3:nth-child(3),
-    .header-top.scrolled .col-lg-3:nth-child(4) {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    /* Ensure the icon content is visible */
-    .header-top.scrolled .quick-contact-icons {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .icon {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .h4 {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      display: block !important;
-      visibility: visible !important;
-    }
-    
-    /* Force proper sizing and visibility of all text elements */
-    .header-top.scrolled .quick-contact-icons .text .h4,
-    .header-top.scrolled .quick-contact-icons .text .caption-text {
-      font-size: 0.8rem !important;
-      line-height: 1.2 !important;
-      color: #333 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-    
-    /* Ensure icons are visible */
-    .header-top.scrolled .quick-contact-icons .icon span {
-      font-size: 1rem !important;
-      color: #007bff !important;
-      display: inline-block !important;
-    }
-    
-    /* Responsive adjustments for header icons */
-    @media (max-width: 992px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        display: block !important; /* Force show on smaller screens when scrolled */
-        flex: 0 0 33.333%; /* Adjust column width to fit all three icons */
-      }
-      
-      .header-top.scrolled .quick-contact-icons {
-        display: flex !important; /* Keep contact info visible on smaller screens when scrolled */
-      }
-      
-      /* Make icons smaller on mobile when scrolled */
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.75rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.9rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .header-top.scrolled .container {
-        padding: 0.5rem 0; /* Reduce padding on mobile */
-      }
-      
-      .header-top.scrolled .company-name h3 {
-        font-size: 0.85rem !important;
-      }
-      
-      .header-top.scrolled img {
-        max-height: 35px !important;
-      }
-      
-      /* Adjust column layout for mobile when scrolled */
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 50%; /* Two icons per row on mobile */
-        margin-bottom: 0.5rem;
-      }
-      
-      /* Further reduce icon sizes on smaller screens */
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.7rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.6rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.8rem;
-      }
-    }
-    
-    /* Extra small screens */
-    @media (max-width: 576px) {
-      .header-top.scrolled .col-lg-3.d-none.d-lg-block {
-        flex: 0 0 100%; /* Full width on very small screens */
-        margin-bottom: 0.25rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .h4 {
-        font-size: 0.65rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .text .caption-text {
-        font-size: 0.55rem;
-      }
-      
-      .header-top.scrolled .quick-contact-icons .icon {
-        font-size: 0.75rem;
-      }
-      
-      /* Stack icons vertically on very small screens if needed */
-      .header-top.scrolled .quick-contact-icons {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+
+    /* FIX: Mobile sidebar active link color */
+.site-mobile-menu .site-nav-wrap li.active > a,
+.site-mobile-menu .site-nav-wrap li.current-menu-item > a {
+  color: #007bff !important; /* Bootstrap primary blue */
+  font-weight: 600;
+  background-color: #f8f9fa; /* light highlight */
+}
+
+/* Service-29283 Improvements */
+.service-29283 {
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service-29283:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-29283 p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+  margin-top: 15px;
+  /* Ensure uniform line width and height for all boxes */
+  min-height: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+
+.service-29283 h3 {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .service-29283 p {
+    min-height: auto;
+    -webkit-line-clamp: none;
+  }
+}
+
+/* Unified Icon Alignment */
+.service-29283 .wrap-icon-39293 {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  margin-bottom: 25px !important;
+  position: relative;
+  z-index: 1;
+}
+
+.service-29283 .wrap-icon-39293:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f0f7ff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.service-29283 .wrap-icon-39293 > span {
+  font-size: 40px !important;
+  line-height: 1 !important;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific adjustment for Cog to match Flaticon top alignment */
+.service-29283 .icon-cog {
+  font-size: 50px !important; /* Cog font is naturally heavier */
+  position: relative;
+  top: -2px;
+}
+
   </style>
 </head>
 
@@ -624,47 +666,39 @@
           </div>
         </div>
       </div>
-      
-      
-      
+
       <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
-      <div class="container">           
-        <div class="d-flex align-items-center">
-          
-          <div class="mx-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                <li class="active">
-                  <a href="index.php" class="nav-link text-left">Home</a>
-                </li>
-                <li>
-                  <a href="about.html" class="nav-link text-left">About Us</a>
-                </li>
-                <li class="has-children">
-                  <a href="#" class="nav-link text-left">Products</a>
-                  <ul class="dropdown">
-                    <li><a href="navigation.html">Navigation equipment</a></li>
-                    <li><a href="automation.html">Automation systems</a></li>
-                    <li><a href="anemometer.html">Anemometer equipment</a></li>
-                    <li><a href="machinery.html">Marine machinery</a></li>
-                    <li><a href="drill.html">Drill rig equipment</a></li>
-                    <li><a href="marine-antiques.html">Marine entiquies</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="contact.html" class="nav-link text-left">Contact</a>
-                </li>
-              </ul>                                                                                                                                                                                                                                                                                          </ul>
-            </nav>
-
+        <div class="container">           
+          <div class="d-flex align-items-center">
+            <div class="mx-auto">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                  <li class="active">
+                    <a href="index.php" class="nav-link text-left">Home</a>
+                  </li>
+                  <li>
+                    <a href="about.html" class="nav-link text-left">About Us</a>
+                  </li>
+                  <li class="has-children">
+                    <a href="#" class="nav-link text-left">Products</a>
+                    <ul class="dropdown">
+                      <li><a href="navigation.html">Navigation Equipment</a></li>
+                      <li><a href="automation.html">Automation Systems</a></li>
+                      <li><a href="anemometer.html">Anemometer Equipment</a></li>
+                      <li><a href="machinery.html">Marine Machinery</a></li>
+                      <li><a href="drill.html">Drill Rig Equipment</a></li>
+                      <li><a href="marine-antiques.html">Marine Entiquies</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="contact.html" class="nav-link text-left">Contact</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-         
         </div>
       </div>
-
-    </div>
-    
     </div>
     
     <div class="hero-slide owl-carousel site-blocks-cover">
@@ -699,56 +733,18 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="images1/ship.jpg" alt="Image" class="img-fluid">
+            <img src="images1/p6.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
             <span class="text-serif text-primary">About Us</span>
             <h3 class="heading-92913 text-black">Welcome To Our Website</h3>
             <p>
-              Sunrise Marine Enterprise is a renowned organization engaged in trading and exports of Marine Equipments in Bhavnagar, Gujarat, India. We have been providing professional services, expertise and support in the field of Marine Digital Electronics for Marine and Offshore Industries.
+              Sunrise marine enterprise is a renowned organization engaged in trading and exports of marine equipments in Bhavnagar, Gujarat, India. We have been providing professional services, expertise and support in the field of marine digital electronics for marine and offshore industries.
             </p>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293">
-                <span class="flaticon-yacht"></span>
-              </span>
-              <h3>Navigation Equipment</h3>
-              <p>Complete range of marine navigation equipment including Radar systems, GPS, Echo sounders, and Autopilot systems.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293">
-                <span class="flaticon-shield"></span>
-              </span>
-              <h3>Automation Systems</h3>
-              <p>Advanced automation solutions including tank level monitoring, engine control systems, and vessel management systems.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293">
-                <span class="flaticon-captain"></span>
-              </span>
-              <h3>Safety Equipment</h3>
-              <p>Essential marine safety equipment including life-saving appliances, fire-fighting equipment, and emergency systems.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- product images  -->
 
     <!-- Drill Equipment Images Section -->
     <div class="site-section bg-light">
@@ -788,6 +784,51 @@
               </div>
             </div>
             <div class="drill-gallery-item">
+              <img src="images1/drill/spool.png" alt="Spool Equipment" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>Spool Equipment</h5>
+              </div>
+            </div>
+
+            
+              <div class="drill-gallery-item">
+              <img src="images1/drill/bushing.png" alt="Spool Equipment" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>VARCO Master Bushing (Casing Bushing)</h5>
+              </div>
+            </div>
+            
+            <div class="drill-gallery-item">
+              <img src="images1/drill/Circular Chart Recorders.png" alt="Low Torque Valve" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>Circular Chart Recorders</h5>
+              </div>
+            </div>
+
+             <div class="drill-gallery-item">
+              <img src="images1/drill/equipments.png" alt="Spool Equipment" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>Heavy-Duty Linkage & Pivot Assembly Kit</h5>
+              </div>
+            </div>
+
+             <div class="drill-gallery-item">
+              <img src="images1/drill/Grooved Pipe Couplings.png" alt="Spool Equipment" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>Grooved Pipe Couplings</h5>
+              </div>
+            </div>
+
+
+
+            <div class="drill-gallery-item">
+              <img src="images1/drill/Drill Pipe Elevators.png" alt="Low Torque Valve" class="img-fluid">
+              <div class="drill-gallery-overlay">
+                <h5>Drill Pipe Elevators</h5>
+              </div>
+            </div>
+
+            <div class="drill-gallery-item">
               <img src="images1/drill/mud cross bop.jpg" alt="Mud Cross BOP" class="img-fluid">
               <div class="drill-gallery-overlay">
                 <h5>Mud Cross BOP</h5>
@@ -805,27 +846,113 @@
                 <h5>Self Retracting Sala Sealed</h5>
               </div>
             </div>
-            <div class="drill-gallery-item">
-              <img src="images1/drill/spool.png" alt="Spool Equipment" class="img-fluid">
-              <div class="drill-gallery-overlay">
-                <h5>Spool Equipment</h5>
-              </div>
-            </div>
+          
+           
+
+
           </div>
         </div>
         
-        <div class="text-center mt-4">
-          <a href="drill.html" class="btn btn-primary py-3 px-5">View All Drill Equipment</a>
+      <div class="d-flex justify-content-between align-items-center mt-4">
+        
+        <!-- Left link -->
+        <a href="drill.html" class="text-primary">
+          View All Drill Equipment
+        </a>
+
+        <!-- Right buttons -->
+        <!-- <div class="d-flex btn-group-gap">
+          <a href="product.pdf" target="_blank" class="btn btn-warning  py-2 px-3">
+            Preview
+          </a>
+          <a href="product.pdf" download class="btn btn-primary  py-2 px-3">
+            Download PDF
+          </a>
+        </div> -->
+
+      </div>
+    </div>
+
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row text-center">
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="navigation.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-yacht"></span>
+          </span>
+          <h3>Navigation Equipment</h3>
+          <p>
+            Complete range of marine navigation equipment including Radar systems, GPS, Echo sounders, and Autopilot systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="automation.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-shield"></span>
+          </span>
+          <h3>Automation Systems</h3>
+          <p>
+            Advanced automation solutions including tank level monitoring, engine control systems, and vessel management systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="index.php" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-captain"></span>
+          </span>
+          <h3>Safety Equipment</h3>
+          <p>
+            Essential marine safety equipment including life-saving appliances, fire-fighting equipment, and emergency systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="drill.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="icon-cog"></span>
+          </span>
+          <h3>Drill Rig Equipment</h3>
+          <p>
+            Comprehensive range of drilling equipment and machinery for marine drilling operations, ensuring safety, efficiency, and reliability.
+          </p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-primary mb-4 text-center">Who We Are</h2>
+            <p class="mb-4" style="font-size: 1.2rem ; align-items: center; justify-content: center;">Sunrise Marine
+              Enterprise is a renowned organization engaged in trading and exports of marine equipments in Bhavnagar,
+              Gujarat, India. We have been providing professional services, expertise and support in the field of marine
+              digital electronics for marine and offshore industries.</p>
+          </div>
         </div>
       </div>
     </div>
 
-        <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
+
+
+    <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="counter-39392">
-              <h3>15+</h3>
+              <h3>27+</h3>
               <span>Years of Experience</span>
             </div>
           </div>
@@ -937,7 +1064,7 @@
               <img src="images1/logo.png" alt="Sunrise Marine Logo" class="img-fluid mr-3" style="max-height: 50px; width: auto; flex-shrink: 0;">
               <h4 class="mb-0" style="font-family: 'Inter', sans-serif; font-weight: 600; color: #007bff; font-size: 1.2rem;">Sunrise Marine Enterprise</h4>
             </div>
-            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 25 years of experience, we provide comprehensive marine equipment solutions worldwide.</p>  
+            <p>Sunrise Marine is your trusted partner for high-quality marine equipment and solutions. With over 27 years of experience, we provide comprehensive marine equipment solutions worldwide.</p>  
             <p><a href="about.html">Learn More</a></p>
           </div>  
           <div class="col-lg-3">
@@ -1016,9 +1143,19 @@
       var scrollThreshold = 100; // Start shrinking after 100px scroll
       
       function updateNavbarPosition() {
-        if (header.hasClass('scrolled')) {
-          var headerHeight = header.outerHeight();
-          navbar.css('top', headerHeight + 'px');
+        if (navbar.hasClass('scrolled')) {
+          var windowWidth = $(window).width();
+          
+          // On mobile (< 992px), navbar goes to top since header is hidden
+          if (windowWidth < 992) {
+            navbar.css('top', '0px');
+          } else {
+            // On desktop, position navbar below the header
+            if (header.hasClass('scrolled')) {
+              var headerHeight = header.outerHeight();
+              navbar.css('top', headerHeight + 'px');
+            }
+          }
         }
       }
       
@@ -1044,12 +1181,15 @@
           // Remove scrolled class and sticky behavior from navbar
           navbar.removeClass('scrolled');
           $('body').removeClass('navbar-sticky');
+          
+          // Reset navbar top position
+          navbar.css('top', '');
         }
       });
       
       // Handle window resize to recalculate heights
       $(window).resize(function() {
-        if (header.hasClass('scrolled')) {
+        if (navbar.hasClass('scrolled')) {
           updateNavbarPosition();
         }
       });
