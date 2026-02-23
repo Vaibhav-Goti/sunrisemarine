@@ -101,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Recipients
         $mail->setFrom($admin_email);
         $mail->addAddress('sunrisemarine11@gmail.com');
+        $mail->addAddress('info@sunrise-marine.com');
         $mail->addReplyTo($email, $name);
 
         // Content

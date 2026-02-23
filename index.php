@@ -165,7 +165,7 @@
       position: relative;
       z-index: 1000;
     }
-    
+
     /* Desktop: Show sticky header when scrolled */
     @media (min-width: 992px) {
       .header-top.scrolled {
@@ -508,6 +508,93 @@
   background-color: #f8f9fa; /* light highlight */
 }
 
+/* Service-29283 Improvements */
+.service-29283 {
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service-29283:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-29283 p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+  margin-top: 15px;
+  /* Ensure uniform line width and height for all boxes */
+  min-height: 100px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+
+.service-29283 h3 {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .service-29283 p {
+    min-height: auto;
+    -webkit-line-clamp: none;
+  }
+}
+
+/* Unified Icon Alignment */
+.service-29283 .wrap-icon-39293 {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  margin-bottom: 25px !important;
+  position: relative;
+  z-index: 1;
+}
+
+.service-29283 .wrap-icon-39293:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f0f7ff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.service-29283 .wrap-icon-39293 > span {
+  font-size: 40px !important;
+  line-height: 1 !important;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific adjustment for Cog to match Flaticon top alignment */
+.service-29283 .icon-cog {
+  font-size: 50px !important; /* Cog font is naturally heavier */
+  position: relative;
+  top: -2px;
+}
+
   </style>
 </head>
 
@@ -595,12 +682,12 @@
                   <li class="has-children">
                     <a href="#" class="nav-link text-left">Products</a>
                     <ul class="dropdown">
-                      <li><a href="navigation.html">Navigation equipment</a></li>
-                      <li><a href="automation.html">Automation systems</a></li>
-                      <li><a href="anemometer.html">Anemometer equipment</a></li>
-                      <li><a href="machinery.html">Marine machinery</a></li>
-                      <li><a href="drill.html">Drill rig equipment</a></li>
-                      <li><a href="marine-antiques.html">Marine entiquies</a></li>
+                      <li><a href="navigation.html">Navigation Equipment</a></li>
+                      <li><a href="automation.html">Automation Systems</a></li>
+                      <li><a href="anemometer.html">Anemometer Equipment</a></li>
+                      <li><a href="machinery.html">Marine Machinery</a></li>
+                      <li><a href="drill.html">Drill Rig Equipment</a></li>
+                      <li><a href="marine-antiques.html">Marine Entiquies</a></li>
                     </ul>
                   </li>
                   <li>
@@ -658,59 +745,6 @@
         </div>
       </div>
     </div>
-
-    <div class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293">
-                <span class="flaticon-yacht"></span>
-              </span>
-              <h3>Navigation Equipment</h3>
-              <p>Complete range of marine navigation equipment including Radar systems, GPS, Echo sounders, and Autopilot systems.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293">
-                <span class="flaticon-shield"></span>
-              </span>
-              <h3>Automation Systems</h3>
-              <p>Advanced automation solutions including tank level monitoring, engine control systems, and vessel management systems.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="service-29283">
-              <span class="wrap-icon-39293"> 
-                <span class="flaticon-captain"></span>
-              </span>
-              <h3>Safety Equipment</h3>
-              <p>Essential marine safety equipment including life-saving appliances, fire-fighting equipment, and emergency systems.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="text-primary mb-4 text-center">Who We Are</h2>
-            <p class="mb-4" style="font-size: 1.2rem ; align-items: center; justify-content: center;">Sunrise Marine
-              Enterprise is a renowned organization engaged in trading and exports of marine equipments in Bhavnagar,
-              Gujarat, India. We have been providing professional services, expertise and support in the field of marine
-              digital electronics for marine and offshore industries.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- product images  -->
 
     <!-- Drill Equipment Images Section -->
     <div class="site-section bg-light">
@@ -827,21 +861,93 @@
         </a>
 
         <!-- Right buttons -->
-        <div class="d-flex btn-group-gap">
+        <!-- <div class="d-flex btn-group-gap">
           <a href="product.pdf" target="_blank" class="btn btn-warning  py-2 px-3">
             Preview
           </a>
           <a href="product.pdf" download class="btn btn-primary  py-2 px-3">
             Download PDF
           </a>
-        </div>
+        </div> -->
 
       </div>
     </div>
 
     </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row text-center">
 
-        <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="navigation.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-yacht"></span>
+          </span>
+          <h3>Navigation Equipment</h3>
+          <p>
+            Complete range of marine navigation equipment including Radar systems, GPS, Echo sounders, and Autopilot systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="automation.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-shield"></span>
+          </span>
+          <h3>Automation Systems</h3>
+          <p>
+            Advanced automation solutions including tank level monitoring, engine control systems, and vessel management systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="index.php" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="flaticon-captain"></span>
+          </span>
+          <h3>Safety Equipment</h3>
+          <p>
+            Essential marine safety equipment including life-saving appliances, fire-fighting equipment, and emergency systems.
+          </p>
+        </a>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 mb-4 d-flex">
+        <a href="drill.html" class="service-29283 w-100">
+          <span class="wrap-icon-39293">
+            <span class="icon-cog"></span>
+          </span>
+          <h3>Drill Rig Equipment</h3>
+          <p>
+            Comprehensive range of drilling equipment and machinery for marine drilling operations, ensuring safety, efficiency, and reliability.
+          </p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-primary mb-4 text-center">Who We Are</h2>
+            <p class="mb-4" style="font-size: 1.2rem ; align-items: center; justify-content: center;">Sunrise Marine
+              Enterprise is a renowned organization engaged in trading and exports of marine equipments in Bhavnagar,
+              Gujarat, India. We have been providing professional services, expertise and support in the field of marine
+              digital electronics for marine and offshore industries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-section bg-image overlay" style="background-image: url('images1/p1.jfif');">
       <div class="container">
         <div class="row">
           <div class="col">
