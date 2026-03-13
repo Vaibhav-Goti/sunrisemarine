@@ -1020,7 +1020,7 @@
 
               <div class="form-group col-md-6">
                 <label for="input-7">Phone Number</label>
-                <input type="tel" class="form-control" id="input-7" name="phone" required>
+                <input type="tel" class="form-control" id="input-7" name="phone" pattern="[0-9]{10}" maxlength="10" title="Please enter a valid 10-digit number. Sequences or identical numbers are not allowed." oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); /^([0-9])\1{9}$|^(0123456789|1234567890|9876543210|0987654321)$/.test(this.value) ? this.setCustomValidity('Sequences or identical numbers are not allowed') : this.setCustomValidity('');" required>
               </div>
 
               <div class="form-group col-md-12">
