@@ -654,7 +654,7 @@
                 <span class="icon-envelope text-primary"></span>
               </div>
               <div class="text">
-                <span class="h4 d-block">info@sunrise-marine.com</span>
+                <span class="h4 d-block">spare@sunrise-marine.com</span>
                 <span class="caption-text">Office mail</span>
               </div>
             </div>
@@ -1000,6 +1000,7 @@
                 <select name="product_category" id="input-5" class="form-control" required>
                   <option value="">Select Category</option>
                   <option value="navigation">Navigation Equipment</option>
+                  <option value="drilling">Drill Rig Equipment</option>
                   <option value="automation">Automation Systems</option>
                   <option value="safety">Safety Equipment</option>
                   <option value="machinery">Marine Machinery</option>
@@ -1088,7 +1089,7 @@
           <div class="col-lg-3">
               <h3 class="footer-heading"><span>Contact Us</span></h3>
               <ul class="list-unstyled">
-                  <li>Email: info@sunrise-marine.com</li>   
+                  <li>Email: spare@sunrise-marine.com</li>   
                   <li>Phone: +91 278 2560837</li>
                   <li>Bhavnagar, India</li>
                   <li><a href="contact.html">Send Enquiry</a></li>
