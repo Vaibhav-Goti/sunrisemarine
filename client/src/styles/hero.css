@@ -1,0 +1,320 @@
+.hero {
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/p2.webp') center/cover no-repeat;
+  /* */
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 10%;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  max-width: 600px;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 10px 0;
+}
+
+.button-view,
+.button-contact {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.button-view {
+  background: #007bff;
+  color: white;
+}
+
+.button-view:hover {
+  background: #0056b3;
+}
+
+.button-contact {
+  background: white;
+  color: #333;
+  margin-left: 10px;
+}
+
+.button-contact:hover {
+  background: #f0f0f0;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 5%;
+    /* Less side padding on mobile */
+    justify-content: center;
+    /* Center content on mobile */
+    text-align: center;
+  }
+
+  .her img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  ;
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+    /* Smaller font for mobile screens */
+  }
+
+  .hero p {
+    font-size: 1rem;
+    /* Smaller description text */
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers buttons and text */
+  }
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  padding: 30px 0;
+
+  /* Centering and spacing on sides */
+  width: 90%;
+  /* Adjust percentage for more/less side space */
+  max-width: 1200px;
+  /* Prevents it from getting too wide on big screens */
+  margin: -30px auto 0;
+  /* -30px pulls it UP into the hero; 'auto' centers it */
+
+  /* Styling */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Keeps it on top of other elements */
+  z-index: 10;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+  /* Gives each item equal width */
+}
+
+/* Optional: add a light border between items like in the image */
+.stat-item:not(:last-child) {
+  border-right: 1px solid #eee;
+}
+
+.stat-item h3 {
+  font-size: 2rem;
+  color: #003366;
+  /* Deep blue to match image */
+  margin: 0;
+}
+
+.stat-item p {
+  font-size: 0.8rem;
+  color: #777;
+  letter-spacing: 1px;
+  margin: 5px 0 0;
+}
+
+/* About section styles moved to home.css */
+
+.services-section {
+  padding: 80px 5%;
+  text-align: center;
+
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  color: #003366;
+  margin: 10px 0;
+}
+
+.underline {
+  width: 50px;
+  height: 4px;
+  background: #007bff;
+  margin: 0 auto 50px;
+}
+
+/* 4-Column Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Creates 4 equal columns */
+  gap: 25px;
+  /* Space between cards */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  /* Lift effect on hover */
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: #f0f7ff;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  color: #003366;
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+}
+
+.service-card p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.view-details {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2x2 grid on tablets */
+  }
+}
+
+.cta-banner {
+  background-color: #1e88e5;
+  /* The vibrant blue from the image */
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  /* Optional: Background pattern/image from your screenshot */
+  background-image: linear-gradient(rgba(30, 136, 229, 0.9), rgba(30, 136, 229, 0.9)),
+    url('/p2.webp');
+  background-size: cover;
+}
+
+.cta-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cta-container p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Button Styling */
+.cta-buttons a {
+  padding: 15px 35px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-dark {
+  background-color: #002244;
+  /* Deep navy blue */
+  color: white;
+}
+
+.btn-white {
+  background-color: white;
+  color: #1e88e5;
+}
+
+.btn-dark:hover {
+  background-color: #001a33;
+  transform: translateY(-3px);
+}
+
+.btn-white:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .stats-bar {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .stat-item {
+    flex: 1 1 40%;
+  }
+  .stat-item:not(:last-child) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    /* 1 column on phones */
+  }
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-container h2 {
+    font-size: 1.8rem;
+  }
+  .stat-item {
+    flex: 1 1 100%;
+  }
+}
+

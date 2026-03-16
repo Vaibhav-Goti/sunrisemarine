@@ -1,0 +1,218 @@
+:root {
+    --footer-bg: #0a192f;
+    --footer-text: #8892b0;
+    --footer-heading: #e6f1ff;
+    --footer-accent: #64ffda;
+    --footer-link-hover: #64ffda;
+    --footer-border: rgba(255, 255, 255, 0.1);
+}
+
+.main-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 80px 0 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    border-top: 1px solid var(--footer-border);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.footer-col {
+    margin-bottom: 40px;
+}
+
+.brand-col .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.brand-col .footer-logo img {
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+.brand-text {
+    color: var(--footer-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brand-description {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--footer-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--footer-heading);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.social-links a:hover {
+    background: var(--footer-accent);
+    color: var(--footer-bg);
+    transform: translateY(-3px);
+}
+
+.footer-heading {
+    color: var(--footer-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--footer-accent);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--footer-link-hover);
+    padding-left: 5px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.contact-info strong {
+    color: var(--footer-heading);
+    font-weight: 500;
+}
+
+.footer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.footer-btn {
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--footer-accent);
+    color: var(--footer-bg);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--footer-accent);
+    color: var(--footer-accent);
+}
+
+.btn-outline:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--footer-border);
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-legal a {
+    color: var(--footer-text);
+    text-decoration: none;
+}
+
+.footer-legal a:hover {
+    color: var(--footer-accent);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
