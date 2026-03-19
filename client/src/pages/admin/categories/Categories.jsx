@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../../../api/axios';
 import { Plus, Edit, Trash2, X, Search } from 'lucide-react';
 import AdminLayout from '../../../components/admin/AdminLayout';
+import Loader from '../../../components/Loader';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -120,7 +121,11 @@ const Categories = () => {
                     </thead>
                     <tbody>
                         {loading ? (
-                            <tr><td colSpan="3" className="empty-table-msg">Loading...</td></tr>
+                            <tr>
+                                <td colSpan="3">
+                                    <Loader />
+                                </td>
+                            </tr>
                         ) : categories.length === 0 ? (
                             <tr>
                                 <td colSpan="3" className="empty-table-msg">
@@ -183,8 +188,8 @@ const Categories = () => {
             )}
 
             {isModalOpen && (
-                <div className="admin-modal-overlay">
-                    <div className="admin-modal">
+                <div className="admin-modal-overlay" onClick={handleCloseModal}>
+                    <div className="admin-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h2>{editingCategory ? 'Edit Category' : 'Add New Category'}</h2>
                             <button onClick={handleCloseModal} className="close-modal"><X size={24} /></button>

@@ -50,7 +50,7 @@
 
 .active-breadcrumb {
     color: var(--accent-blue);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .hero-content {
@@ -246,7 +246,7 @@
 .button-view {
     background: #05509b;
     color: white;
-    padding: 18px 30px;
+    padding: 14px 21px;
     border-radius: 15px;
     font-weight: 700;
     transition: all 0.3s;

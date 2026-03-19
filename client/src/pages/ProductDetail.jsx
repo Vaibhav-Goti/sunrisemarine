@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Shield, Truck, Clock, RefreshCcw, CheckCircle } from 'lucide-react';
 import API from '../api/axios';
+import SEO from '../components/SEO';
+
 
 const ProductDetail = () => {
     const [product, setProduct] = useState(null);
@@ -30,6 +32,12 @@ const ProductDetail = () => {
 
     return (
         <div className="product-detail-page" style={{ backgroundColor: '#fff', fontFamily: 'Inter, sans-serif' }}>
+            <SEO 
+                title={product.name}
+                description={product.description.substring(0, 160)}
+                keywords={`${product.name}, ${product.category}, marine equipment, ship spares, Sunrise Marine`}
+            />
+
             {/* Breadcrumbs */}
             <div style={{ backgroundColor: '#f8faff', padding: '20px 0', borderBottom: '1px solid #eee' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#666' }}>

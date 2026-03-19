@@ -19,6 +19,8 @@ import API from '../api/axios';
 import '../styles/hero.css';
 import '../styles/home.css';
 import '../styles/products.css';
+import SEO from '../components/SEO';
+
 
 /* ---- Config ---- */
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
@@ -78,24 +80,63 @@ const Home = () => {
   );
 
   /* ---------- Carousel navigation ---------- */
-  const VISIBLE   = 5;   // cards shown at once
-  const trackRef  = useRef(null);
+  const [visibleCount, setVisibleCount] = useState(5);
+  const trackRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
+  // Responsive visible cards count
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 550) setVisibleCount(1.2);
+      else if (window.innerWidth < 850) setVisibleCount(2.5);
+      else if (window.innerWidth < 1100) setVisibleCount(3.5);
+      else setVisibleCount(5);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // activeIdx is the index of the first visible card
-  const maxIdx  = Math.max(slides.length - VISIBLE, 0);
+  const maxIdx = Math.max(slides.length - Math.floor(visibleCount), 0);
   const canPrev = activeIdx > 0;
   const canNext = activeIdx < maxIdx;
 
   const gotoPrev = useCallback(() => setActiveIdx((i) => Math.max(i - 1, 0)), []);
   const gotoNext = useCallback(() => setActiveIdx((i) => Math.min(i + 1, maxIdx)), [maxIdx]);
-  const gotoIdx  = useCallback((i) => setActiveIdx(Math.max(0, Math.min(i, maxIdx))), [maxIdx]);
+  const gotoIdx = useCallback((i) => setActiveIdx(Math.max(0, Math.min(i, maxIdx))), [maxIdx]);
 
   // Reset when slides reload
   useEffect(() => { setActiveIdx(0); }, [slides.length]);
 
-  const slideWidthPct = 100 / VISIBLE;
-  const translatePct  = activeIdx * slideWidthPct;
+  /* ---------- Intersection Observer for Animations ---------- */
+  const aboutRef = useRef(null);
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAboutVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (aboutRef.current) {
+      observer.observe(aboutRef.current);
+    }
+
+    return () => {
+      if (aboutRef.current) {
+        observer.unobserve(aboutRef.current);
+      }
+    };
+  }, []);
+
+  const slideWidthPct = 100 / visibleCount;
+  const translatePct = activeIdx * slideWidthPct;
 
   /* ---------- Quote form state ---------- */
   const [form, setForm] = useState({
@@ -107,8 +148,8 @@ const Home = () => {
     message: '',
   });
   const [submitting, setSubmitting] = useState(false);
-  const [status,     setStatus]     = useState(null);
-  const [statusMsg,  setStatusMsg]  = useState('');
+  const [status, setStatus] = useState(null);
+  const [statusMsg, setStatusMsg] = useState('');
   const [captchaToken, setCaptchaToken] = useState(null);
 
   const handleCaptchaChange = (token) => {
@@ -130,7 +171,7 @@ const Home = () => {
     setSubmitting(true);
     setStatus(null);
     try {
-      const subject     = `Product Enquiry: ${form.category} – ${form.product || 'General'}`;
+      const subject = `Product Enquiry: ${form.category} – ${form.product || 'General'}`;
       const messageBody =
         `Product Category: ${form.category}\n` +
         `Specific Product: ${form.product || '—'}\n` +
@@ -138,10 +179,10 @@ const Home = () => {
         `${form.message}`;
 
       await API.post('/contacts', {
-        user_name:  form.user_name,
+        user_name: form.user_name,
         user_email: form.user_email,
         subject,
-        message:    messageBody,
+        message: messageBody,
         captchaToken,
       });
 
@@ -161,6 +202,12 @@ const Home = () => {
      ====================================================== */
   return (
     <main>
+      <SEO
+        title="Home"
+        description="Global leaders in marine equipment solutions. Sunrise Marine Enterprise provides high-end navigation, engine stores, and safety equipment since 1999."
+        keywords="marine equipment, navigation solutions, automation, safety, shipping, Sunrise Marine"
+      />
+
 
       {/* ====== HERO ====== */}
       <section className="hero">
@@ -173,7 +220,7 @@ const Home = () => {
           </p>
           <div className="hero-btns">
             <Link to="/products" className="button-view">View Products &rarr;</Link>
-            <Link to="/contact"  className="button-contact">Contact Us</Link>
+            <Link to="/contact" className="button-contact">Contact Us</Link>
           </div>
         </div>
       </section>
@@ -187,7 +234,10 @@ const Home = () => {
       </section>
 
       {/* ====== ABOUT SECTION ====== */}
-      <section className="about-section">
+      <section 
+        className={`about-section ${isAboutVisible ? 'animate-in' : ''}`} 
+        ref={aboutRef}
+      >
         <div className="about-inner">
           <div className="about-img-wrap">
             <img src="/p6.jpg" alt="Sunrise Marine Enterprise" />
@@ -260,13 +310,13 @@ const Home = () => {
                   style={{ transform: `translateX(-${translatePct}%)` }}
                 >
                   {slides.map((slide, i) => {
-                    const isCenter = i === activeIdx + Math.floor(VISIBLE / 2);
+                    const isCenter = i === activeIdx + Math.floor(visibleCount / 2);
                     return (
-                      <div
-                        className={`dc-slide${isCenter ? ' dc-slide--active' : ''}`}
-                        key={i}
-                        style={{ minWidth: `${slideWidthPct}%` }}
-                      >
+                        <div
+                          className={`dc-slide${isCenter ? ' dc-slide--active' : ''}`}
+                          key={i}
+                          style={{ width: `${slideWidthPct}%`, flex: `0 0 ${slideWidthPct}%` }}
+                        >
                         <div className="dc-card">
                           <div className="dc-img-wrap">
                             <img
@@ -312,7 +362,7 @@ const Home = () => {
 
             <div style={{ textAlign: 'center', marginTop: '32px' }}>
               <Link to="/products/drill-rig-equipments" className="button-view">
-                View All Drill Equipment &rarr;
+                View All Drill Equipment
               </Link>
             </div>
           </>
@@ -331,7 +381,7 @@ const Home = () => {
             <div className="icon-box"><Compass size={26} /></div>
             <h3>Navigation Equipment</h3>
             <p>Complete range of marine navigation equipment including Radar systems, GPS, Echo sounders, and Autopilot systems.</p>
-            <Link to="/products/navigation-equipment" className="view-details">View Details</Link>
+            <Link to="/products/navigation-equipment-" className="view-details">View Details</Link>
           </div>
           <div className="service-card">
             <div className="icon-box"><Cpu size={26} /></div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Search, FileText, Download } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, FileText, Download, Package } from 'lucide-react';
 import API from '../../api/axios';
 import AdminLayout from '../../components/admin/AdminLayout';
+import Loader from '../../components/Loader';
 
 const ProductManagement = () => {
     const [products, setProducts] = useState([]);
@@ -118,8 +119,8 @@ const ProductManagement = () => {
                 <div className="header-actions">
                     <button 
                         onClick={handleExportPDF} 
-                        className="button-view" 
-                        style={{ background: '#6c757d', display: 'flex', alignItems: 'center', gap: '8px' }}
+                        className="button-view export-btn-mobile" 
+                        style={{ background: '#f8f9fa', color: '#333', border: '1px solid #ddd', display: 'flex', alignItems: 'center', gap: '8px' }}
                         disabled={exporting}
                     >
                         <Download size={20} /> {exporting ? 'Generating...' : 'Export PDF'}
@@ -138,7 +139,7 @@ const ProductManagement = () => {
                         placeholder="Search products by name or description..." 
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="search-input-admin"
+                        className="search-input-admin product-search-mobile"
                     />
                 </div>
             </div>
@@ -156,18 +157,15 @@ const ProductManagement = () => {
                     <tbody>
                         {loading ? (
                             <tr>
-                                <td colSpan="4" className="empty-table-msg">
-                                    <div style={{ padding: '100px', textAlign: 'center' }}>
-                                        <div className="loader-spinner"></div>
-                                        <p style={{ marginTop: '15px', color: '#666' }}>Loading products...</p>
-                                    </div>
+                                <td colSpan="4">
+                                    <Loader />
                                 </td>
                             </tr>
                         ) : (
                             <>
                                 {products.map(product => (
-                                    <tr key={product._id}>
-                                        <td data-label="Image">
+                                    <tr key={product._id} className="product-row-mobile">
+                                        <td  className="img-cell">
                                             <div className="product-item-preview">
                                                 <img
                                                     src={product.images?.[0]?.startsWith('http') ? product.images[0] : `${import.meta.env.VITE_API_BASE_URL}${product.images?.[0] || ''}`}
@@ -176,9 +174,20 @@ const ProductManagement = () => {
                                                 />
                                             </div>
                                         </td>
-                                        <td data-label="Name"><strong>{product.name}</strong></td>
-                                        <td data-label="Category"><span className="category-pill">{product.category}</span></td>
-                                        <td data-label="Actions">
+                                        <td  className="info-cell">
+                                            <div className="product-info-mobile">
+                                                <div className="name-action-wrapper">
+                                                    <strong>{product.name}</strong>
+                                                </div>
+                                                <div className="category-pill-wrapper">
+                                                    <span className="category-pill">{product.category}</span>
+                                                </div>
+                                                {/* <div className="stock-info-mobile">
+                                                    <Package size={14} /> <span>Stock: 8 units</span>
+                                                </div> */}
+                                            </div>
+                                        </td>
+                                        <td  className="action-cell">
                                             <div className="action-btns">
                                                 <Link to={`/admin/edit-product/${product._id}`} className="action-btn edit-btn" title="Edit Product">
                                                     <Edit size={18} />

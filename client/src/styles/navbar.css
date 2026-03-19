@@ -1,4 +1,4 @@
-/* Container styling */
+/* ===== Container ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -6,11 +6,12 @@
   padding: 0 2rem;
   background-color: #ffffff;
   height: 70px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1000;
 }
 
+/* ===== Brand ===== */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -26,6 +27,7 @@
   font-weight: bold;
 }
 
+/* ===== Nav Links (Desktop) ===== */
 .nav-links {
   display: flex;
   list-style: none;
@@ -36,29 +38,74 @@
 }
 
 .nav-links a {
-  text-decoration: none;
+  position: relative;
   color: #333;
+  text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
+  padding: 4px 0;
+}
+
+/* Animated underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #0074D9;
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
 .nav-links a:hover {
   color: #0074D9;
 }
 
-/* Position the parent relative so the menu can be absolute */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ===== Active Link (desktop pill + mobile highlight) ===== */
+.nav-link-active {
+  color: #0074D9 !important;
+}
+
+.nav-link-active::after {
+  width: 100% !important;
+}
+
+/* ===== Logout button ===== */
+.logout-btn-nav {
+  background: none;
+  border: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+  margin-top:10px;
+}
+
+.logout-btn-nav:hover {
+  color: #0074D9;
+}
+
+/* ===== Dropdown ===== */
 .dropdown {
   position: relative;
 }
 
 .dropdown-menu {
-  display: none;          /* Hide by default */
+  display: none;
   position: absolute;
-  top: 100%;              /* Directly below the link */
+  top: 100%;
   left: 0;
   background-color: #fff;
   min-width: 220px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 10px 0;
   z-index: 1000;
@@ -76,27 +123,11 @@
   background-color: #f8f9fa;
 }
 
-/* Show the menu when hovering over the parent 'li' */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-.logout-btn-nav {
-  background: none;
-  border: none;
-  color: #333;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.3s;
-}
-
-.logout-btn-nav:hover {
-  color: #0074D9;
-}
-
-/* Hamburger Menu Toggle */
+/* ===== Hamburger Toggle ===== */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -115,14 +146,61 @@
   height: 3px;
   background-color: #333;
   border-radius: 10px;
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 
-/* Mobile Responsiveness */
-@media screen and (max-width: 850px) {
+/* Hamburger → X animation */
+.menu-toggle--open .hamburger:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle--open .hamburger:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.menu-toggle--open .hamburger:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* ===== Close button inside drawer ===== */
+.nav-close-item {
+  display: none;
+  border-bottom: none !important;
+  justify-content: flex-end;
+  width: 100%;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.nav-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f4f8;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.nav-close-btn:hover {
+  background: #e0e7ef;
+  color: #0074D9;
+  transform: rotate(90deg);
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media screen and (max-width: 1050px) {
   .navbar {
     padding: 0 15px;
     height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
   }
 
   .nav-brand {
@@ -145,6 +223,7 @@
     display: flex;
   }
 
+  /* Side drawer */
   .nav-links {
     position: fixed;
     top: 0;
@@ -155,12 +234,13 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 80px 30px;
+    padding: 24px 24px 40px;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
     gap: 0;
     z-index: 2000;
+    overflow-y: auto;
   }
 
   .nav-links.nav-active {
@@ -172,13 +252,39 @@
     border-bottom: 1px solid #f0f0f0;
   }
 
-  .nav-links li a, .logout-btn-nav {
+  /* Show close button on mobile */
+  .nav-close-item {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0 !important;
+    margin-bottom: 6px;
+  }
+
+  .nav-links li a,
+  .logout-btn-nav {
     display: block;
     padding: 15px 0;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #333;
     font-weight: 600;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+
+  .nav-links li a:hover {
+    color: #0074D9;
+    padding-left: 6px;
+  }
+
+  /* Active link on mobile */
+  .nav-link-active {
+    color: #0074D9 !important;
+    background: linear-gradient(90deg, rgba(0, 116, 217, 0.08) 0%, transparent 100%);
+    border-radius: 6px;
+    padding-left: 8px !important;
+  }
+
+  .nav-link-active::after {
+    display: none;
   }
 
   .logout-btn-nav {
@@ -195,7 +301,7 @@
     border-radius: 0;
     width: 100%;
   }
-  
+
   .dropdown:hover .dropdown-menu,
   .dropdown:active .dropdown-menu {
     display: block;
@@ -206,7 +312,7 @@
   .brand-name {
     font-size: 1rem;
   }
-  
+
   .logo-img {
     height: 40px;
   }

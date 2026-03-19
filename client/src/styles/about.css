@@ -118,7 +118,7 @@
 
 /* ---- WHO WE ARE (split) ---- */
 .about-who-section {
-  padding: 100px 5%;
+  padding: 40px 5%;
   background: #f9fbfe;
 }
 
@@ -204,7 +204,7 @@
 
 /* ---- PURPOSE / VISION / MISSION ---- */
 .about-purpose-section {
-  padding: 100px 5%;
+  padding: 40px 5%;
   background: #fff;
 }
 
@@ -295,7 +295,7 @@
 
 /* ---- COMPANY PROFILE ---- */
 .about-profile-section {
-  padding: 100px 5%;
+  padding: 50px 5%;
   background: linear-gradient(135deg, #f0f6ff 0%, #e8f0fc 100%);
 }
 
@@ -396,7 +396,7 @@
 
 /* ---- CTA ---- */
 .about-cta-section {
-  padding: 100px 5%;
+  padding: 40px 5%;
   background: linear-gradient(135deg, #003366 0%, #1e88e5 100%);
   text-align: center;
   color: #fff;

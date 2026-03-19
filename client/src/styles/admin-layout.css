@@ -63,7 +63,7 @@
 
 .admin-layout.sidebar-collapsed .sidebar-header {
     justify-content: center;
-    padding: 18px 0;
+    padding: 15px 15px;
 }
 
 .admin-layout.sidebar-collapsed .sidebar-footer {
@@ -180,6 +180,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right:5px;
 }
 
 .item-text {
@@ -193,6 +194,7 @@
 .sidebar-footer {
     padding: 20px 15px;
     border-top: 1px solid #f0f0f0;
+    flex-shrink: 0; /* Ensure footer is never squashed */
 }
 
 .sidebar-logout-btn {
@@ -208,6 +210,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .sidebar-logout-btn:hover {
@@ -336,7 +339,9 @@
         left: -280px;
         transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 2000;
-        overflow: auto; /* Ensure scrollability on mobile if content exceeds height */
+        height: 100vh;
+        height: 100dvh; /* Use dynamic viewport height if supported */
+        overflow: hidden; /* Keep header and footer pinned, only nav scrolls */
     }
 
     .admin-sidebar.open {
@@ -350,7 +355,7 @@
     .sidebar-logout-btn span,
     .active-indicator {
         display: block !important;
-        padding:5px;
+        padding: 0; /* Remove redundant padding that might cause layout shifts */
     }
 
     .sidebar-header {
@@ -383,6 +388,7 @@
     .admin-main {
         margin-left: 0 !important;
         width: 100% !important;
+        overflow-x: hidden;
     }
 
     .admin-topbar {
@@ -444,7 +450,12 @@
     }
 
     .admin-layout.sidebar-collapsed .sidebar-footer {
-        padding: 20px 15px;
+        padding: 20px 15px 35px 15px; /* Added extra bottom padding for mobile browsers */
+    }
+
+    /* Base mobile footer padding */
+    .sidebar-footer {
+        padding: 20px 15px 35px 15px !important;
     }
 
     /* Restore original padding and alignment for mobile */

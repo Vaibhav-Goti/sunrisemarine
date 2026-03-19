@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../../../api/axios';
 import { Trash2, ChevronRight, Search, X } from 'lucide-react';
 import AdminLayout from '../../../components/admin/AdminLayout';
+import Loader from '../../../components/Loader';
 
 const ContactMessages = () => {
     const [messages, setMessages] = useState([]);
@@ -118,7 +119,7 @@ const ContactMessages = () => {
 
                 <div className="inquiry-body">
                     {loading ? (
-                        <div className="no-data">Loading messages...</div>
+                        <Loader />
                     ) : filteredMessages.length === 0 ? (
                         <div className="no-data">
                             {searchTerm ? `No messages found matching "${searchTerm}"` : 'No messages received yet.'}

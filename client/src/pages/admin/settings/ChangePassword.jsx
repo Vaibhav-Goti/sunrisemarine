@@ -10,6 +10,7 @@ const ChangePassword = () => {
         confirmPassword: ''
     });
     const [status, setStatus] = useState({ type: '', message: '' });
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,6 +19,7 @@ const ChangePassword = () => {
             return;
         }
 
+        setLoading(true);
         try {
             const response = await API.post('/admin/change-password', {
                 currentPassword: formData.currentPassword,
@@ -26,8 +28,10 @@ const ChangePassword = () => {
 
             setStatus({ type: 'success', message: response.data.message });
             setFormData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+            setLoading(false);
         } catch (error) {
             setStatus({ type: 'error', message: error.response?.data?.message || 'Password change failed' });
+            setLoading(false);
         }
     };
 
@@ -88,8 +92,8 @@ const ChangePassword = () => {
                         />
                     </div>
 
-                    <button type="submit" className="submit-btn-admin">
-                        Update Password
+                    <button type="submit" className="submit-btn-admin" disabled={loading}>
+                        {loading ? 'Changing...' : 'Update Password'}
                     </button>
                 </form>
             </div>

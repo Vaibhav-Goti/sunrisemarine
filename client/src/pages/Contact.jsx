@@ -4,6 +4,8 @@ import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import API from '../api/axios';
 import '../styles/contact.css';
+import SEO from '../components/SEO';
+
 
 const Contact = () => {
   //  console.log("SITE KEY:", import.meta.env.VITE_RECAPTCHA_SITE_KEY);
@@ -46,6 +48,12 @@ const Contact = () => {
 
     return (
         <main className="contact-page">
+            <SEO 
+                title="Contact Us" 
+                description="Get in touch with Sunrise Marine Enterprise for expert marine equipment support, product inquiries, and global shipping solutions. We are based in Alang, Gujarat."
+                keywords="contact sunrise marine, marine equipment inquiry, technical support, Alang ship breaking yard, marine parts India"
+            />
+
             <section className="inner-hero">
                 <div className="hero-content">
                     <h1>Get In Touch</h1>

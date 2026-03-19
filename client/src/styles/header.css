@@ -17,9 +17,11 @@
   margin-bottom: 5px; /* for when it wraps */
 }
 
-.icon {
+.icon, .header-icon {
   margin-right: 8px;
   color: #ffb400; /* Gold/yellow color for icons */
+  display: flex;
+  align-items: center;
 }
 
 /* Pushes the email to the far right in the header only */
@@ -31,11 +33,11 @@
 /* Mobile Responsiveness */
 @media screen and (max-width: 650px) {
   .top-header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     text-align: center;
-    padding: 10px;
-    gap: 8px;
+    padding: 5px;
+    gap: 5px;
   }
   
   .header-item {

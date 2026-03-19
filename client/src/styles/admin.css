@@ -1,10 +1,10 @@
 .loader-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #003366;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0, 51, 102, 0.1);
+    border-top: 3px solid #003366;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     margin: 0 auto;
 }
 
@@ -16,6 +16,22 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.loader-text {
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .admin-container {
@@ -30,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -121,7 +137,7 @@
 /* Form Styles */
 .form-card-admin {
     background: #fff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     max-width: 700px;
@@ -177,7 +193,6 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -715,34 +730,38 @@
 }
 
 .page-btn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid #e2e8f0;
     background: #fff;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 0.9rem;
     color: #718096;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 .page-btn:hover:not(:disabled) {
     border-color: #3182ce;
     color: #3182ce;
+    background: #f8fafc;
 }
 
 .page-btn.active {
     background: #3182ce;
     color: #fff;
     border-color: #3182ce;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .page-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
+    background: #f1f5f9;
 }
 
 /* Mobile Responsiveness for Inquiries - Matching Category Card Design */
@@ -908,25 +927,28 @@
 /* --- Dashboard Stats --- */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
     margin-top: 20px;
 }
 
 .stats-card {
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border: 1px solid #f0f3f5;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .stats-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .stats-icon {
@@ -936,23 +958,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .stats-info h3 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin: 0;
     color: #2d3748;
     font-weight: 800;
+    line-height: 1;
 }
 
 .stats-info p {
     color: #718096;
-    margin: 5px 0 0;
+    margin: 4px 0 0;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
 }
 
 .stats-trend {
@@ -997,6 +1020,7 @@
     position: relative;
     max-width: 400px;
     width: 100%;
+    
 }
 
 .search-icon {
@@ -1026,12 +1050,15 @@
 }
 
 .category-pill {
-    background: #ebf4ff;
-    color: #3182ce;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
+    background: #e1f0ff;
+    color: #007bff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
 }
 
 .empty-table-msg {
@@ -1120,6 +1147,20 @@
 @media screen and (max-width: 768px) {
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .stats-card {
+        padding:30px;
+    }
+
+    .stats-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stats-info h3 {
+        font-size: 1.5rem;
     }
 
     .welcome-banner {
@@ -1130,8 +1171,40 @@
         font-size: 1.6rem;
     }
 
+    .header-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .header-actions > * {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 10px !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .export-btn-mobile {
+        background: #f8f9fa !important;
+        color: #495057 !important;
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .add-btn-nav {
+        background: #007bff !important;
+        color: white !important;
+        border: none !important;
+    }
+
     .search-box-container {
         max-width: 100%;
+        width: 100%;
     }
 
     /* Category Table Mobile Optimization */
@@ -1139,11 +1212,19 @@
         display: none;
     }
 
+    .admin-table,
+    .admin-table tbody {
+        display: block;
+        width: 100%;
+    }
+
     .admin-table tr {
         display: block;
         padding: 15px;
         border-bottom: 8px solid #f8f9fa;
         background: #fff;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .admin-table td {
@@ -1253,16 +1334,10 @@
         display: none;
     }
 
-    /* Brand color for Add Category button */
-    .add-btn-nav {
+    /* Brand color for Add Category button - Specific for Category page if needed */
+    .admin-main .admin-content .admin-table-container:not(:has(.product-img-small)) .add-btn-nav {
         background: #ff6b1a !important;
-        /* Orange from screenshot */
         border-color: #ff6b1a !important;
-        border-radius: 10px;
-        padding: 12px 20px !important;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
 
     .admin-header h1 {
@@ -1272,66 +1347,137 @@
     .search-input-admin {
         border-radius: 12px;
         background: #f1f5f9;
+        border: 1px solid #edf2f7;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Product Table Specific Card View - Matching USER Reference */
+    .admin-table-container:has(.product-img-small) {
+        background: transparent;
+        box-shadow: none;
         border: none;
     }
 
-    /* Product Table Specific Card View */
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) {
-        background: transparent;
-        box-shadow: none;
+    .admin-table-container:has(.product-img-small) .admin-table {
+        display: block;
     }
 
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .admin-table tr {
-        display: flex;
-        flex-direction: column;
+    .admin-table-container:has(.product-img-small) .admin-table tbody {
+        display: block;
+    }
+
+    .product-row-mobile {
+        display: flex !important;
+        flex-direction: row !important;
         align-items: center;
         background: #fff;
-        border-radius: 20px;
-        margin-bottom: 25px;
-        padding: 5px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+        padding: 12px;
         border: 1px solid #edf2f7;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-    }
-
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .admin-table td {
-        display: block;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        position: relative;
+        gap: 15px;
         width: 100%;
-        padding: 2px 0;
-        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .product-row-mobile .img-cell {
+        flex-shrink: 0;
+        padding: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    .product-row-mobile .product-img-small {
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 12px;
+        object-fit: cover;
+        margin-bottom: 0 !important;
+    }
+
+    .product-row-mobile .info-cell {
+        flex-grow: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        text-align: left !important;
+        gap: 6px;
     }
 
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .admin-table td::before {
-        display: none;
-    }
-
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .product-img-small {
-        width: 140px;
-        height: 140px;
-        border-radius: 15px;
-        margin-bottom: 10px;
-    }
-
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) td:nth-child(2) strong {
-        font-size: 1.2rem;
-        color: #003366;
+    .product-info-mobile strong {
+        font-size: 1.05rem;
+        color: #1a202c;
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 4px;
+        padding-right: 50px; /* Space for actions icons */
     }
 
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .category-pill {
-        display: inline-block;
-        margin-bottom: 15px;
+    .category-pill-wrapper {
+        margin-bottom: 6px;
     }
 
-    .admin-main .admin-content .admin-table-container:has(.product-img-small) .action-btns {
-        justify-content: center;
-        gap: 30px;
-        margin-top: 10px;
-        padding-top: 15px;
-        border-top: 1px solid #f7fafc;
-        width: 100%;
+    .category-pill-wrapper .category-pill {
+        background: #eef6ff;
+        color: #3182ce;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .stock-info-mobile {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #718096;
+        font-size: 0.85rem;
+    }
+
+    .product-row-mobile .action-cell {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: auto !important;
+        padding: 0 !important;
+    }
+
+    .product-row-mobile .action-btns {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        border-top: none !important;
+        padding-top: 0 !important;
+    }
+
+    .product-row-mobile .action-btn {
+        color: #a0aec0;
+        transition: color 0.2s;
+    }
+
+    .product-row-mobile .action-btn:hover {
+        color: #4a5568;
+    }
+
+    .product-row-mobile .delete-btn:hover {
+        color: #e53e3e;
+    }
+
+    .product-search-mobile {
+        border-radius: 12px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 14px 15px 14px 45px !important;
+    }
+
+    /* Prevent horizontal scroll on body/html for admin layout on mobile */
+    .admin-layout {
+        overflow-x: hidden;
+        max-width: 100vw;
     }
 }
 

@@ -3,8 +3,8 @@
    ============================================================ */
 
 .about-section {
-  padding: 80px 5%;
-  background: #f9fbfe;
+  padding: 30px 5%;
+  background: #ffffff;
 }
 
 .about-inner {
@@ -14,7 +14,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
-
+ 
 .about-img-wrap {
   flex: 1;
   min-width: 0;
@@ -22,16 +22,33 @@
 
 .about-img-wrap img {
   width: 100%;
-  height: 380px;
+  height: 400px; /* Slightly taller for more presence */
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 51, 102, 0.15);
   display: block;
+  transform: translateX(-40px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about-section.animate-in .about-img-wrap img {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .about-text-wrap {
   flex: 1;
   min-width: 0;
+  transform: translateX(40px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: 0.2s; /* Text slides in slightly after the image */
+}
+
+.about-section.animate-in .about-text-wrap {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .about-eyebrow {
@@ -94,9 +111,11 @@
     flex-direction: column;
     gap: 36px;
   }
+
   .about-img-wrap img {
     height: 260px;
   }
+
   .about-text-wrap h2 {
     font-size: 1.9rem;
   }
@@ -108,7 +127,7 @@
    ============================================================ */
 
 .drill-carousel-section {
-  padding: 80px 5%;
+  padding: 40px 5%;
   background: #f4f8fd;
 }
 
@@ -157,6 +176,8 @@
   flex: 1;
   overflow: hidden;
   border-radius: 4px;
+  margin: 0 45px;
+  /* Space for absolute arrows */
 }
 
 /* ---- Track: flex row that slides horizontally ---- */
@@ -171,13 +192,13 @@
   padding: 10px 8px;
   box-sizing: border-box;
   transition: padding 0.3s, opacity 0.3s;
-  opacity: 0.72;
+  /* opacity: 0.72; */
 }
 
 /* Center / active slide */
 .dc-slide--active {
   opacity: 1;
-  padding: 0 8px;
+  /* padding: 0 8px; */
 }
 
 /* ---- Card ---- */
@@ -198,26 +219,28 @@
 /* ---- Image area — fixed height, full image visible (no crop) ---- */
 .dc-img-wrap {
   width: 100%;
-  height: 210px;
-  background: #eef3fa;
+  aspect-ratio: 1 / 1; /* Perfectly square containers */
+  background: #ffffff; /* Clean white background */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 1px solid #eef3fa; /* Subtle border to define the card */
+  border-radius: 14px;
 }
 
 .dc-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* ← no crop, full image shown */
-  padding: 14px;
+  object-fit: contain; /* Fits full image inside the square box without cropping */
+  padding: 15px; /* Adds space around the image inside the square */
   box-sizing: border-box;
   display: block;
-  transition: transform 0.35s ease;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.dc-slide--active .dc-img-wrap img {
-  transform: scale(1.04);
+.dc-card:hover .dc-img-wrap img {
+  transform: scale(1.1); /* Zoom effect on hover */
 }
 
 /* ---- Label shown only on center card ---- */
@@ -252,9 +275,11 @@
 
 /* ---- Arrow buttons ---- */
 .dc-arrow {
-  flex-shrink: 0;
-  width: 46px;
-  height: 46px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   background: #fff;
@@ -264,15 +289,23 @@
   justify-content: center;
   color: #003366;
   cursor: pointer;
-  transition: background 0.22s, color 0.22s, transform 0.2s, opacity 0.2s;
-  z-index: 5;
+  transition: all 0.22s;
+  z-index: 10;
 }
 
-.dc-arrow:hover:not(.dc-arrow--disabled) {
+.dc-arrow--prev {
+  left: 0;
+}
+
+.dc-arrow--next {
+  right: 0;
+}
+
+/* .dc-arrow:hover:not(.dc-arrow--disabled) {
   background: #1e88e5;
   color: #fff;
   transform: scale(1.1);
-}
+} */
 
 .dc-arrow--disabled {
   opacity: 0.35;
@@ -305,21 +338,35 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 1100px) {
-  /* show 4 cards — override via JS VISIBLE value not needed because we keep 5,
-     the CSS just scales them smaller; adjust track clip width instead */
-  .dc-img-wrap { height: 190px; }
+  /* No height needed, aspect-ratio 1/1 handles it */
 }
 
 @media (max-width: 800px) {
-  .dc-img-wrap { height: 160px; }
-  .drill-carousel-header h2 { font-size: 1.8rem; }
+  /* No height needed, aspect-ratio 1/1 handles it */
+
+  .drill-carousel-header h2 {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 550px) {
-  .dc-wrapper { gap: 6px; }
-  .dc-arrow { width: 36px; height: 36px; }
-  .dc-img-wrap { height: 130px; }
-  .drill-carousel-header h2 { font-size: 1.5rem; }
+  /* No height needed, aspect-ratio 1/1 handles it */
+  .dc-wrapper {
+    gap: 6px;
+  }
+
+  .dc-track-clip {
+    margin: 0 30px;
+  }
+
+  .dc-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .drill-carousel-header h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* ---- Loading / Empty state ---- */
@@ -335,10 +382,21 @@
   font-weight: 500;
 }
 
-.carousel-status p { margin: 0; color: #7a9cbf; }
+.carousel-status p {
+  margin: 0;
+  color: #7a9cbf;
+}
 
-@keyframes spin { to { transform: rotate(360deg); } }
-.carousel-spinner { animation: spin 1s linear infinite; color: #1e88e5; }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.carousel-spinner {
+  animation: spin 1s linear infinite;
+  color: #1e88e5;
+}
 
 
 
@@ -371,7 +429,7 @@
    ============================================================ */
 
 .quote-section {
-  padding: 90px 5%;
+  padding: 40px 5%;
   background: linear-gradient(135deg, #f0f6ff 0%, #e8f0fc 100%);
 }
 
@@ -395,7 +453,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 10px;
 }
 
@@ -515,13 +573,16 @@
 }
 
 @media (max-width: 700px) {
+
   .quote-header,
   .quote-body {
     padding: 28px 22px;
   }
+
   .form-row {
     grid-template-columns: 1fr;
   }
+
   .quote-header h2 {
     font-size: 1.6rem;
   }

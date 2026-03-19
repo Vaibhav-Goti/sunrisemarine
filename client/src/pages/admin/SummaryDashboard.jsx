@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Tags, MessageSquare, TrendingUp } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import Loader from '../../components/Loader';
 import API from '../../api/axios';
 
 const SummaryDashboard = () => {
@@ -56,7 +57,7 @@ const SummaryDashboard = () => {
             </div>
 
             {loading ? (
-                <div className="no-data">Loading statistics...</div>
+                <Loader />
             ) : (
                 <div className="stats-grid">
                     {cards.map((card, index) => (

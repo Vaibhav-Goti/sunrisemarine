@@ -10,7 +10,7 @@
 .main-footer {
     background-color: var(--footer-bg);
     color: var(--footer-text);
-    padding: 80px 0 0;
+    padding: 40px 0 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     border-top: 1px solid var(--footer-border);
 }
@@ -25,7 +25,7 @@
 }
 
 .footer-col {
-    margin-bottom: 40px;
+    margin-bottom: 0px;
 }
 
 .brand-col .footer-logo {
@@ -85,7 +85,7 @@
     color: var(--footer-heading);
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px;
 }
@@ -95,7 +95,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 30px;
+    width: 50px;
     height: 2px;
     background-color: var(--footer-accent);
 }
@@ -124,6 +124,14 @@
 .contact-info p {
     margin-bottom: 15px;
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-info p svg {
+    color: var(--footer-accent);
+    flex-shrink: 0;
 }
 
 .contact-info strong {
@@ -201,7 +209,7 @@
 @media (max-width: 992px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        gap: 15px;
     }
 }
 

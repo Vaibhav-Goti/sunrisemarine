@@ -19,13 +19,27 @@ html, body {
 }
 
 .sticky-header {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
     width: 100%;
     z-index: 9999;
-    background-color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Desktop: Both Header and Navbar stick together as a single block */
+@media (min-width: 851px) {
+    .sticky-header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Mobile: Wrapper is removed from layout tree (display: contents). 
+   Navbar itself must have 'sticky' positioning (set in navbar.css). */
+@media (max-width: 850px) {
+    .sticky-header {
+        display: contents;
+    }
 }
 
 /* Ensure no parent container blocks the sticky behavior */

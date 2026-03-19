@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { X } from 'lucide-react';
 import API from '../../api/axios';
 import AdminLayout from '../../components/admin/AdminLayout';
+import Loader from '../../components/Loader';
 import '../../styles/admin.css';
 
 const ProductForm = () => {
@@ -15,6 +16,7 @@ const ProductForm = () => {
     const [images, setImages] = useState([]); // new local files
     const [existingImages, setExistingImages] = useState([]); // url of images already on server
     const [loading, setLoading] = useState(false);
+    const [fetching, setFetching] = useState(false);
     const [error, setError] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
@@ -29,18 +31,22 @@ const ProductForm = () => {
 
     const fetchCategories = async () => {
         try {
+            setFetching(true);
             const response = await API.get('/categories');
             setCategories(response.data);
             if (!isEdit && response.data.length > 0) {
                 setFormData(prev => ({ ...prev, category: response.data[0].name }));
             }
+            setFetching(false);
         } catch (error) {
             console.error('Error fetching categories:', error);
+            setFetching(false);
         }
     };
 
     const fetchProduct = async () => {
         try {
+            setFetching(true);
             const response = await API.get(`/products/${id}`);
             const product = response.data;
             setFormData({
@@ -51,8 +57,10 @@ const ProductForm = () => {
             if (product.images) {
                 setExistingImages(product.images);
             }
+            setFetching(false);
         } catch (error) {
             console.error('Error fetching product:', error);
+            setFetching(false);
         }
     };
 
@@ -112,7 +120,11 @@ const ProductForm = () => {
         <AdminLayout>
             <div className="form-card-admin">
                 <h2 className="form-title">{isEdit ? 'Edit Product' : 'Add New Product'}</h2>
-                {error && <p className="error-msg">{error}</p>}
+                {fetching ? (
+                    <Loader />
+                ) : (
+                    <>
+                        {error && <p className="error-msg">{error}</p>}
                 <form onSubmit={handleSubmit} className="admin-form">
                     <div className="form-group">
                         <label>Product Name</label>
@@ -208,17 +220,19 @@ const ProductForm = () => {
                             </div>
                         )}
                     </div>
-                    <button type="submit" className="submit-btn-admin" disabled={loading}>
-                        {loading ? 'Saving...' : isEdit ? 'Update Product' : 'Add Product'}
-                    </button>
-                    <button 
-                        type="button" 
-                        onClick={() => navigate('/admin/dashboard')} 
-                        className="cancel-btn-admin"
-                    >
-                        Cancel
-                    </button>
-                </form>
+                            <button type="submit" className="submit-btn-admin" disabled={loading}>
+                                {loading ? 'Saving...' : (isEdit ? 'Update Product' : 'Add Product')}
+                            </button>
+                            <button 
+                                type="button" 
+                                onClick={() => navigate('/admin/dashboard')} 
+                                className="cancel-btn-admin"
+                            >
+                                Cancel
+                            </button>
+                        </form>
+                    </>
+                )}
             </div>
         </AdminLayout>
     );

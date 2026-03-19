@@ -55,7 +55,7 @@
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 5%;
+    padding: 20px 3%;
     /* Less side padding on mobile */
     justify-content: center;
     /* Center content on mobile */
@@ -68,7 +68,6 @@
     object-fit: cover;
   }
 
-  ;
 
   .hero-content h1 {
     font-size: 2.2rem;
@@ -86,6 +85,23 @@
     align-items: center;
     /* Centers buttons and text */
   }
+
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .button-contact,
+  .button-view {
+    margin-left: 0;
+    min-width: 140px;
+    text-align: center;
+    border-radius: 12px; 
+  }
 }
 
 .stats-bar {
@@ -93,14 +109,14 @@
   justify-content: space-around;
   align-items: center;
   background: white;
-  padding: 30px 0;
+  padding: 15px 0;
 
   /* Centering and spacing on sides */
   width: 90%;
   /* Adjust percentage for more/less side space */
   max-width: 1200px;
   /* Prevents it from getting too wide on big screens */
-  margin: -30px auto 0;
+  margin: -55px auto 0;
   /* -30px pulls it UP into the hero; 'auto' centers it */
 
   /* Styling */
@@ -139,7 +155,7 @@
 /* About section styles moved to home.css */
 
 .services-section {
-  padding: 80px 5%;
+  padding: 40px 5%;
   text-align: center;
 
 }
@@ -170,7 +186,7 @@
 
 .service-card {
   background: #fff;
-  padding: 40px 30px;
+  padding: 20px 30px;
   border-radius: 15px;
   text-align: left;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -226,7 +242,7 @@
 .cta-banner {
   background-color: #1e88e5;
   /* The vibrant blue from the image */
-  padding: 80px 20px;
+  padding: 40px 20px;
   text-align: center;
   color: white;
   /* Optional: Background pattern/image from your screenshot */
@@ -290,11 +306,18 @@
 @media (max-width: 768px) {
   .stats-bar {
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
   }
+
   .stat-item {
     flex: 1 1 40%;
+    padding: 15px 10px;
   }
+
+  .stat-item h3 {
+    font-size: 1.5rem;
+  }
+
   .stat-item:not(:last-child) {
     border-right: none;
   }
@@ -305,6 +328,7 @@
     grid-template-columns: 1fr;
     /* 1 column on phones */
   }
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;
@@ -313,8 +337,9 @@
   .cta-container h2 {
     font-size: 1.8rem;
   }
+
   .stat-item {
-    flex: 1 1 100%;
+    flex: 1 1 45%;
+    padding: 10px 5%;
   }
 }
-

@@ -33,11 +33,12 @@ const AdminSidebar = ({ isOpen, setIsOpen, isCollapsed }) => {
     }, []);
 
     // Close sidebar on location change (for mobile only)
+    // Watch both pathname AND search so category links (?category=...) also close the sidebar
     useEffect(() => {
         if (isOpen && window.innerWidth <= 768) {
             setIsOpen(false);
         }
-    }, [location.pathname]);
+    }, [location.pathname, location.search]);
 
     const menuItems = [
         {
@@ -46,15 +47,16 @@ const AdminSidebar = ({ isOpen, setIsOpen, isCollapsed }) => {
             path: '/admin/dashboard'
         },
         {
-            title: 'Product Management',
-            icon: <Box size={20} />,
-            path: '/admin/products'
-        },
-        {
             title: 'Categories',
             icon: <Tags size={20} />,
             path: '/admin/categories'
         },
+        {
+            title: 'Product Management',
+            icon: <Box size={20} />,
+            path: '/admin/products'
+        },
+      
         {
             title: 'Contact Messages',
             icon: <MessageSquare size={20} />,

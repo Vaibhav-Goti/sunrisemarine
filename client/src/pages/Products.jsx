@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
-
 import '../styles/products.css';
-
+import { Loader2 } from 'lucide-react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { LayoutGrid, Shield, Settings, Activity, Anchor, ChevronRight, ChevronLeft, Search } from 'lucide-react';
 import API from '../api/axios';
 import '../styles/catalog.css';
+import SEO from '../components/SEO';
+
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -95,10 +95,32 @@ const Products = () => {
 
     // Categories array loaded dynamically
 
-    if (loading) return <div className="admin-container" style={{ textAlign: 'center', padding: '150px' }}>Loading catalog...</div>;
-
+  if (loading) {
+    return (
+        <div 
+            className="admin-container" 
+            style={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                height: '60vh',
+                flexDirection: 'column',
+                gap: '10px'
+            }}
+        >
+            <Loader2 size={40} className="spinner" />
+            <p style={{ color: '#666' }}>Loading catalog...</p>
+        </div>
+    );
+}
     return (
         <div className="catalog-page">
+            <SEO 
+                title={category ? category.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Product Catalog'}
+                description={`Browse our premium collection of ${category ? category.replace(/-/g, ' ') : 'marine equipment'}. Quality navigation, safety, and automation electronics for global shipping.`}
+                keywords={`marine products, ${category ? category.replace(/-/g, ', ') : 'marine spares'}, vessel equipment, Sunrise Marine store`}
+            />
+
             <section className="inner-hero">
                 <div className="hero-content">
                     <nav className="breadcrumbs">
@@ -188,30 +210,35 @@ const Products = () => {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="pagination">
-                                <button 
-                                    className="page-link" 
-                                    disabled={currentPage === 1} 
-                                    onClick={() => setCurrentPage(currentPage - 1)}
-                                >
-                                    <ChevronLeft size={20} />
-                                </button>
-                                {[...Array(totalPages)].map((_, i) => (
+                            <div className="pagination-wrapper">
+                                <div className="pagination-info">
+                                    Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
+                                </div>
+                                <div className="pagination">
                                     <button 
-                                        key={i} 
-                                        className={`page-link ${currentPage === i + 1 ? 'active' : ''}`}
-                                        onClick={() => setCurrentPage(i + 1)}
+                                        className="page-link" 
+                                        disabled={currentPage === 1} 
+                                        onClick={() => setCurrentPage(currentPage - 1)}
                                     >
-                                        {i + 1}
+                                        <ChevronLeft size={20} />
                                     </button>
-                                ))}
-                                <button 
-                                    className="page-link" 
-                                    disabled={currentPage === totalPages} 
-                                    onClick={() => setCurrentPage(currentPage + 1)}
-                                >
-                                    <ChevronRight size={20} />
-                                </button>
+                                    {[...Array(totalPages)].map((_, i) => (
+                                        <button 
+                                            key={i} 
+                                            className={`page-link ${currentPage === i + 1 ? 'active' : ''}`}
+                                            onClick={() => setCurrentPage(i + 1)}
+                                        >
+                                            {i + 1}
+                                        </button>
+                                    ))}
+                                    <button 
+                                        className="page-link" 
+                                        disabled={currentPage === totalPages} 
+                                        onClick={() => setCurrentPage(currentPage + 1)}
+                                    >
+                                        <ChevronRight size={20} />
+                                    </button>
+                                </div>
                             </div>
                         )}
                     </main>

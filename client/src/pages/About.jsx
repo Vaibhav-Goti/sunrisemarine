@@ -15,10 +15,18 @@ import {
   Headphones,
 } from 'lucide-react';
 import '../styles/about.css';
+import SEO from '../components/SEO';
+
 
 const About = () => {
   return (
     <div className="about-page">
+      <SEO 
+        title="About Us" 
+        description="Learn about Sunrise Marine Enterprise, India's premier marine equipment specialists since 1999. Sourcing quality navigation, safety, and automation solutions globally."
+        keywords="about sunrise marine, marine equipment supplier India, Bhavnagar marine company, maritime history, vessel services"
+      />
+
 
       {/* ======== HERO ======== */}
       <section className="about-hero">
@@ -42,7 +50,7 @@ const About = () => {
       </section>
 
       {/* ======== STATS BAR ======== */}
-      <div className="about-stats-bar">
+      {/* <div className="about-stats-bar">
         <div className="about-stat">
           <div className="about-stat-num">25+</div>
           <div className="about-stat-label">Years Experience</div>
@@ -59,7 +67,7 @@ const About = () => {
           <div className="about-stat-num">24/7</div>
           <div className="about-stat-label">Tech Support</div>
         </div>
-      </div>
+      </div> */}
 
       {/* ======== WHO WE ARE ======== */}
       <section className="about-who-section">
@@ -225,7 +233,7 @@ const About = () => {
           discuss your specific vessel equipment requirements.
         </p>
         <div className="about-cta-btns">
-          <Link to="/contact" className="btn-white-solid">Contact Us Today</Link>
+          <Link to="/contact" className="btn-white-solid">Contact Us</Link>
           <Link to="/products" className="btn-white-outline">Browse Products</Link>
         </div>
       </section>
