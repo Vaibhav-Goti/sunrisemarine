@@ -13,4 +13,21 @@ API.interceptors.request.use((config) => {
     return config;
 });
 
+// Add a response interceptor to handle token expiration/invalid tokens
+API.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (error) => {
+        if (error.response && error.response.status === 401) {
+            // Token expired or invalid
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            // Navigate to home page
+            window.location.href = '/';
+        }
+        return Promise.reject(error);
+    }
+);
+
 export default API;

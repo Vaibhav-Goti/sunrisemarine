@@ -98,6 +98,21 @@
     vertical-align: middle;
 }
 
+/* Responsive visibility utilities */
+.mobile-visible {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    .desktop-visible {
+        display: none !important;
+    }
+    .mobile-visible {
+        display: block !important; /* On mobile, we show mobile-specific content */
+    }
+}
+
+
 .admin-table tr:hover {
     background-color: #fcfcfc;
 }
@@ -399,7 +414,7 @@
 }
 
 .close-modal:hover {
-    color: #dc3545;
+    color: #f45565;
 }
 
 /* --- Contact Messages --- */
@@ -1579,6 +1594,28 @@
     font-size: 0.95rem;
     color: #475569;
     font-weight: 500;
+}
+
+.inquiry-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #e8f4fd;
+    color: #007bff;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid #d0e8fc;
+}
+
+.contact-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid #e5e7eb;
 }
 
 .detail-modal .modal-footer {

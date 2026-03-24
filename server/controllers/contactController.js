@@ -6,6 +6,20 @@ const submitContactForm = async (req, res) => {
     try {
         const { user_name, user_email, subject, message, captchaToken } = req.body;
 
+        // Auto-detect type based on subject or message content
+        let type = 'contact';
+        const searchContent = `${subject} ${message}`.toLowerCase();
+        
+        if (
+            searchContent.includes('product inquiry') || 
+            searchContent.includes('product enquiry') || 
+            searchContent.includes('inquiry about') ||
+            searchContent.includes('enquiry about') ||
+            searchContent.includes('product category:')
+        ) {
+            type = 'product_inquiry';
+        }
+
         // Verify reCAPTCHA
         if (process.env.RECAPTCHA_SECRET_KEY) {
             if (!captchaToken) {
@@ -21,7 +35,13 @@ const submitContactForm = async (req, res) => {
             }
         }
 
-        const newContact = new Contact({ user_name, user_email, subject, message });
+        const newContact = new Contact({ 
+            user_name, 
+            user_email, 
+            subject, 
+            message,
+            type
+        });
         await newContact.save();
 
         if (process.env.SMTP_HOST && process.env.SMTP_USERNAME) {

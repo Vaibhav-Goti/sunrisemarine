@@ -22,14 +22,26 @@ import './App.css';
 // Protected Route component
 const ProtectedRoute = ({ children }) => {
     const { user, loading } = useAuth();
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
     if (loading) return <div>Loading...</div>;
-    if (!user) return <Navigate to="/login" />;
+
+    // check both state + localStorage
+    if (!user && !storedUser) {
+        return <Navigate to="/" />;
+    }
+
     return children;
 };
 
 function AppContent() {
+    const { user, loading } = useAuth();
     const location = useLocation();
     const isAdminRoute = location.pathname.startsWith('/admin');
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div className="app">
@@ -48,7 +60,12 @@ function AppContent() {
                 <Route path="/products/:category" element={<Products />} />
                 
                 {/* Admin Routes */}
-                <Route path="/login" element={<Login />} />
+                <Route 
+                    path="/login" 
+                    element={
+                        (user || storedUser) ? <Navigate to="/admin/dashboard" /> : <Login />
+                    } 
+                />
                 <Route path="/admin/dashboard" element={<ProtectedRoute><SummaryDashboard /></ProtectedRoute>} />
                 <Route path="/admin/products" element={<ProtectedRoute><ProductManagement /></ProtectedRoute>} />
                 <Route path="/admin/add-product" element={<ProtectedRoute><ProductForm /></ProtectedRoute>} />

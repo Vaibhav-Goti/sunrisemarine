@@ -38,8 +38,10 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar" ref={navRef}>
-                <div className="nav-brand">
-                    <img src="/logo.png" alt="Logo" className="logo-img" />
+              <div className="nav-brand">
+                    <NavLink to="/" onClick={closeMenu}>
+                        <img src="/logo.png" alt="Logo" className="logo-img" />
+                    </NavLink>
                     <span className="brand-name">Sunrise Marine</span>
                 </div>
 

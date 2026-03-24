@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import API from '../api/axios';
@@ -8,13 +8,26 @@ import SEO from '../components/SEO';
 
 
 const Contact = () => {
-  //  console.log("SITE KEY:", import.meta.env.VITE_RECAPTCHA_SITE_KEY);
+    const [searchParams] = useSearchParams();
     const [formData, setFormData] = useState({
         user_name: '',
         user_email: '',
         subject: '',
         message: ''
     });
+
+    useEffect(() => {
+        const productSubject = searchParams.get('subject');
+        const productMessage = searchParams.get('message');
+        if (productSubject || productMessage) {
+            setFormData(prev => ({ 
+                ...prev, 
+                subject: productSubject || prev.subject,
+                message: productMessage || prev.message
+            }));
+        }
+    }, [searchParams]);
+
     const [status, setStatus] = useState('');
     const [captchaToken, setCaptchaToken] = useState(null);
 
@@ -105,7 +118,7 @@ const Contact = () => {
                                     </div>
                                     <div className="method-text">
                                         <h3>Email Inquiry</h3>
-                                        <p>spare@sunrise-marine.com<br />sales@sunrise-marine.com</p>
+                                        <p>spare@sunrise-marine.com<br />info@sunrise-marine.com</p>
                                     </div>
                                 </div>
                             </div>

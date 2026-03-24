@@ -8,6 +8,7 @@ const ContactMessages = () => {
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const [filterType, setFilterType] = useState('all');
     const [selectedMessage, setSelectedMessage] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -85,27 +86,52 @@ const ContactMessages = () => {
         };
     };
 
-    const filteredMessages = messages.filter(msg =>
-        msg.user_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        msg.user_email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        msg.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        msg.message?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredMessages = messages.filter(msg => {
+        const matchesSearch = 
+            msg.user_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            msg.user_email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            msg.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            msg.message?.toLowerCase().includes(searchTerm.toLowerCase());
+        
+        const matchesType = filterType === 'all' || (msg.type || 'contact') === filterType;
+
+        return matchesSearch && matchesType;
+    });
 
     return (
         <AdminLayout>
             <div className="admin-header">
                 <h1>Contact Messages</h1>
                 <div className="header-actions">
-                    <div className="search-box-container">
-                        <Search className="search-icon" size={18} />
-                        <input
-                            type="text"
-                            placeholder="Search messages..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="search-input-admin"
-                        />
+                    <div className="filter-group-admin" style={{ display: 'flex', gap: '10px' }}>
+                        <select 
+                            className="admin-select-filter" 
+                            value={filterType} 
+                            onChange={(e) => setFilterType(e.target.value)}
+                            style={{
+                                padding: '8px 15px',
+                                borderRadius: '8px',
+                                border: '1px solid #ddd',
+                                fontSize: '0.9rem',
+                                color: '#333',
+                                cursor: 'pointer',
+                                outline: 'none'
+                            }}
+                        >
+                            <option value="all">All Types</option>
+                            <option value="contact">General Contact</option>
+                            <option value="product_inquiry">Product Inquiry</option>
+                        </select>
+                        <div className="search-box-container">
+                            <Search className="search-icon" size={18} />
+                            <input
+                                type="text"
+                                placeholder="Search messages..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="search-input-admin"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,7 +166,21 @@ const ContactMessages = () => {
                                     </div>
                                     <div className="col-subject">
                                         <div className="subject-title">
-                                            {!msg.isRead && <span className="unread-dot"></span>}
+                                            {/* {!msg.isRead && <span className="unread-dot"></span>}
+                                            <span style={{ 
+                                                fontSize: '0.7rem', 
+                                                padding: '2px 8px', 
+                                                borderRadius: '10px', 
+                                                marginRight: '8px',
+                                                backgroundColor: (msg.type || 'contact') === 'product_inquiry' ? '#e8f4fd' : '#f0f0f0',
+                                                color: (msg.type || 'contact') === 'product_inquiry' ? '#007bff' : '#666',
+                                                fontWeight: 'bold',
+                                                display: 'inline-block',
+                                                verticalAlign: 'middle',
+                                                marginBottom: '2px'
+                                            }}>
+                                                {(msg.type || 'contact') === 'product_inquiry' ? 'INQUIRY' : 'CONTACT'}
+                                            </span> */}
                                             {msg.subject}
                                         </div>
                                         <div className="subject-snippet">
@@ -196,6 +236,13 @@ const ContactMessages = () => {
                         </div>
 
                         <div className="modal-body">
+                            {/* <div className="detail-section">
+                                <label>Message Type</label>
+                                <div className={`detail-value ${(selectedMessage.type || 'contact') === 'product_inquiry' ? 'inquiry-badge' : 'contact-badge'}`}>
+                                    {(selectedMessage.type || 'contact') === 'product_inquiry' ? 'Product Inquiry' : 'General Contact'}
+                                </div>
+                            </div> */}
+
                             <div className="detail-section">
                                 <label>Subject</label>
                                 <div className="detail-value subject-value">{selectedMessage.subject}</div>

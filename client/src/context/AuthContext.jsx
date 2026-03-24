@@ -7,11 +7,32 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const isTokenExpired = (token) => {
+        if (!token) return true;
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            return payload.exp * 1000 < Date.now();
+        } catch (e) {
+            return true;
+        }
+    };
+
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         const token = localStorage.getItem('token');
+        
         if (storedUser && token) {
-            setUser(JSON.parse(storedUser));
+            if (isTokenExpired(token)) {
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+                setUser(null);
+                // Force redirect to home if on an admin route
+                if (window.location.pathname.startsWith('/admin')) {
+                    window.location.href = '/';
+                }
+            } else {
+                setUser(JSON.parse(storedUser));
+            }
         }
         setLoading(false);
     }, []);

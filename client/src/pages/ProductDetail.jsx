@@ -103,7 +103,10 @@ const ProductDetail = () => {
 
 
                             <div style={{ display: 'flex', gap: '20px', marginBottom: '50px' }}>
-                                <Link to="/contact" className="button-view" style={{
+                                <Link 
+                                    to={`/contact?subject=Product Enquiry: ${product.name}&message=${encodeURIComponent(`Product Category: ${product.category}\nSpecific Product: ${product.name}`)}`} 
+                                    className="button-view" 
+                                    style={{
                                     padding: '18px 40px',
                                     fontSize: '1.1rem',
                                     textDecoration: 'none',

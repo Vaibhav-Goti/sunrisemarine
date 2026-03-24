@@ -165,7 +165,7 @@ const ProductManagement = () => {
                             <>
                                 {products.map(product => (
                                     <tr key={product._id} className="product-row-mobile">
-                                        <td  className="img-cell">
+                                        <td className="img-cell">
                                             <div className="product-item-preview">
                                                 <img
                                                     src={product.images?.[0]?.startsWith('http') ? product.images[0] : `${import.meta.env.VITE_API_BASE_URL}${product.images?.[0] || ''}`}
@@ -174,20 +174,20 @@ const ProductManagement = () => {
                                                 />
                                             </div>
                                         </td>
-                                        <td  className="info-cell">
+                                        <td className="info-cell">
                                             <div className="product-info-mobile">
                                                 <div className="name-action-wrapper">
                                                     <strong>{product.name}</strong>
                                                 </div>
-                                                <div className="category-pill-wrapper">
+                                                <div className="category-pill-wrapper mobile-visible">
                                                     <span className="category-pill">{product.category}</span>
                                                 </div>
-                                                {/* <div className="stock-info-mobile">
-                                                    <Package size={14} /> <span>Stock: 8 units</span>
-                                                </div> */}
                                             </div>
                                         </td>
-                                        <td  className="action-cell">
+                                        <td className="category-cell desktop-visible">
+                                            <span className="category-pill">{product.category}</span>
+                                        </td>
+                                        <td className="action-cell">
                                             <div className="action-btns">
                                                 <Link to={`/admin/edit-product/${product._id}`} className="action-btn edit-btn" title="Edit Product">
                                                     <Edit size={18} />

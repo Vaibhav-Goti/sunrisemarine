@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
     LayoutDashboard, 
     Box, 
@@ -16,6 +16,7 @@ import API from '../../api/axios';
 
 const AdminSidebar = ({ isOpen, setIsOpen, isCollapsed }) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { logout } = useAuth();
     const [categories, setCategories] = useState([]);
     const [isProductMenuOpen, setIsProductMenuOpen] = useState(location.pathname === '/admin/products');
@@ -73,7 +74,16 @@ const AdminSidebar = ({ isOpen, setIsOpen, isCollapsed }) => {
         <aside className={`admin-sidebar ${isOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
                 <div className="sidebar-brand">
-                    <img src="/logo.png" alt="Admin" className="admin-logo" />
+                    <img 
+                    src="/logo.png" 
+                    alt="Admin" 
+                    className="admin-logo"
+                    onClick={() => {
+                        navigate('/');
+                        setIsOpen(false);
+                    }}
+                    style={{ cursor: 'pointer' }}
+                />
                     <div className="admin-info">
                         <h3>Admin Panel</h3>
                         <p>Sunrise Marine</p>
@@ -145,7 +155,7 @@ const AdminSidebar = ({ isOpen, setIsOpen, isCollapsed }) => {
                                 >
                                     <span className="item-icon">{item.icon}</span>
                                     <span className="item-text">{item.title}</span>
-                                    {location.pathname === item.path && <ChevronRight size={16} className="active-indicator" />}
+                                    {/* {location.pathname === item.path && <ChevronRight size={16} className="active-indicator" />} */}
                                 </Link>
                             )}
                         </div>

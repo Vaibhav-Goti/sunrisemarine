@@ -17,6 +17,11 @@ const ContactSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    type: {
+        type: String,
+        enum: ['contact', 'product_inquiry'],
+        default: 'contact'
+    },
     isRead: {
         type: Boolean,
         default: false
